@@ -15,7 +15,7 @@ public class AdultFemale extends Person{
 	public AdultFemale(int age, char gender, boolean mobilityConcerns){
 		super(age, gender, mobilityConcerns);
 	}
-	public Nutrition getNutritionalNeeds(){
+	public static Nutrition getNutritionalNeeds(){
 		return NUTRITIONAL_NEEDS;
 	}
 }
