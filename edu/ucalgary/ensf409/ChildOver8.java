@@ -15,7 +15,7 @@ public class ChildOver8 extends Person{
 	public ChildOver8(int age, char gender, boolean mobilityConcerns){
 		super(age, gender, mobilityConcerns);
 	}
-	public Nutrition getNutritionalNeeds(){
+	public static Nutrition getNutritionalNeeds(){
 		return NUTRITIONAL_NEEDS;
 	}
 }
