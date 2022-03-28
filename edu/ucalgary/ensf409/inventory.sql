@@ -212,3 +212,6 @@ VALUES
 ('Cream of mushroom soup', 31, 0, 8, 61, 200), 
 ('Granola cereal', 60, 0, 19, 21, 1260), 
 ('Black fungus, 200 g', 0, 77, 23, 0, 564);
+
+USE FOOD_INVENTORY;
+DESCRIBE FOOD_INVENTORY;
