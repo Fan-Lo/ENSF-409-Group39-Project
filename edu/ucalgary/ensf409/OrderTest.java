@@ -1,8 +1,3 @@
-/*
-Copyright Ann Barcomb and Emily Marasco, 2022
-All rights reserved. This code may not be published or shared.
-Sharing or posting this code is an academic integrity violation.
-*/
 
 package edu.ucalgary.ensf409;
 
@@ -11,17 +6,20 @@ import static org.junit.Assert.*;
 import java.io.*;
 import java.util.*;
 
-/* *********** Tests for a simplified reader of a BibTeX file.  *********** */
-public class ProjectTest {
-    // Test data - these values may be changed in actual tests
-    private final String TEST_FILE_NAME = "example.txt";
-    private final String[] EXAMPLE_DATA = {
-        "@article{barcomb:2020:managing,",
-        "   title={Managing Episodic Contributors in Free/ Libre/ Open Source Software Communities},",
-        "   author={Barcomb, Ann and Stol, Klaas-Jan and Fitzgerald, Brian and Riehle, Dirk},",
-        "   year={2020}",
-        "}"
-    };
+/* *********** Tests for the Order class  *********** */
+public class OrderTest {
+    // Test data 
+    private final Nutrition ADULT_MALE_NEEDS = new Nutrition(16, 28, 26, 30, 2500);
+    private final Nutrition ADULT_FEMALE_NEEDS = new Nutrition(16, 28, 26, 30, 2500);
+    private final Nutrition CHILDEN_UNDER_NEEDS = new Nutrition(21, 33, 31, 15, 2200);
+    private final Nutrition CHILDEN_OVER_NEEDS = new Nutrition(21, 33, 31, 15, 1400);
+    private final Person ADULT_MALE = new Person(ADULT_MALE_NEEDS, 1);
+    private final Person ADULT_FEMALE = new Person(ADULT_FEMALE_NEEDS, 2);
+    private final Person CHILD_UNDER = new Person(CHILDEN_UNDER_NEEDS, 3);
+    private final Person CHILD_OVER = new Person(CHILDEN_OVER_NEEDS, 3);
+    private final Family FAMILY = new Family()
+    private final FoodItem tomoatoSauce = new FoodItem("Tomato Sauce", 1, new Nutrition(0, 80, 10, 10, 120));
+    private final FoodItem appleDozen = new FoodItem("Apple, dozen", 4, new Nutrition(0, 100, 0, 0, 624));
 
     
     /*

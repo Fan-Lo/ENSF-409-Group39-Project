@@ -1,29 +1,19 @@
 /** 
 * Person.java
-* @version 1.0
+* @version 1.1
 * @since 1.0	
 * First draft of class Person
 **/   
 
 package edu.ucalgary.ensf409;
 
-public abstract class Person{
-	private int age;
-	private char gender;
-	private boolean mobilityConcerns;
+public class Person{
+	private final Nutrition NUTRITIONAL_NEEDS;
+	private final int CLIENT_ID;
 	
-	public Person(int age, char gender, boolean mobilityConcerns){
-		this.age = age;
-		this.gender = gender;
-		this.mobilityConcerns = mobilityConcerns;
+	public Person(Nutrition nutritionalNeeds, int clientID){
+		this.NUTRITIONAL_NEEDS = nutritionalNeeds;
+		this.CLIENT_ID = clientID;
 	}
-	public int getAge(){
-		return this.age;
-	}
-	public char getGender(){
-		return this.gender;
-	}
-	public boolean getMobilityConcerns(){
-		return this.mobilityConcerns;
-	}
+
 }
