@@ -17,20 +17,20 @@ public class OrderTest {
     private final Person ADULT_FEMALE = new Person(ADULT_FEMALE_NEEDS, 2);
     private final Person CHILD_UNDER = new Person(CHILDEN_UNDER_NEEDS, 3);
     private final Person CHILD_OVER = new Person(CHILDEN_OVER_NEEDS, 3);
-    private final Family FAMILY = new Family()
-    private final FoodItem tomoatoSauce = new FoodItem("Tomato Sauce", 1, new Nutrition(0, 80, 10, 10, 120));
-    private final FoodItem appleDozen = new FoodItem("Apple, dozen", 4, new Nutrition(0, 100, 0, 0, 624));
+    private final Family FAMILY = new Family();
+    private Inventory inventory = new Inventory();
+
 
     
     /*
-     * BibReader(File) is called with a file which cannot be read.
-     * readFile() returns false and does not throw an exception.
+     * Testing constructor of Order
     */
     @Test
     public void testReadFileReturnsFalseBadInput() {
         // Test data - these values may be changed in actual tests 
         File noSuchFile = new File("this_file_does_not_exist.txt");
 
+        Order()
         // Variables for status
         boolean returnIsTrue = true;
         boolean exceptionThrown = false;
