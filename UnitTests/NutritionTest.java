@@ -6,11 +6,11 @@ import static org.junit.Assert.*;
 
 public class NutritionTest {
 
-    public int myGrain = 0;
-    public int myVegFru = 0;
-    public int myProtien = 0;
-    public int myCalories = 0;
-    public int myOther = 0;
+    public int myGrain = 10;
+    public int myVegFru = 20;
+    public int myProtien = 30;
+    public int myCalories = 40;
+    public int myOther = 50;
     
 
     public Nutrition myNut = new Nutrition(myGrain, myVegFru, 
@@ -18,7 +18,7 @@ public class NutritionTest {
 
     public Nutrition myWeekly = myNut.getWeeklyNeeds();
 
-
+    
     // Test getGrain
     @Test
     public void testGetGrain() {
