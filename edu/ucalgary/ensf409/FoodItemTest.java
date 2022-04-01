@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 
 public class FoodItemTest {
     // Test data
-    public FoodItem item = new FoodItem(0, 80, 10, 10, 120, "Tomato Sauce, jar", 1234);
+    private FoodItem item = new FoodItem(0, 80, 10, 10, 120, "Tomato Sauce, jar", 1234);
 
     @Test 
     public void testFoodItemConstructor(){
