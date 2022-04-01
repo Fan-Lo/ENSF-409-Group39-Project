@@ -17,7 +17,7 @@ public class FoodItemTest {
     }
 
     @Test
-    public void testgetName(){
+    public void testGetName(){
         String expectedName = "Tomato Sauce, jar";
         String actualName = item.getName();
 
