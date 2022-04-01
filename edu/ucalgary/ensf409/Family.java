@@ -9,4 +9,8 @@ public class Family {
     public Family() {
         familyMembers = new ArrayList<>();
     }
+
+    public void addFamilyMember(Person member) {
+        this.familyMembers.add(member);
+    }
 }

@@ -1,7 +1,6 @@
-
 package edu.ucalgary.ensf409;
-
 import org.junit.*;
+
 import static org.junit.Assert.*;
 import java.io.*;
 import java.util.*;
@@ -23,12 +22,12 @@ public class OrderTest {
 
     
     /*
-     * Testing constructor of Order
+     * Using constructor to pass a family object, and use the getter to retrieve
+     * an arraylist containing the same family object
     */
     @Test
-    public void testReadFileReturnsFalseBadInput() {
-        // Test data - these values may be changed in actual tests 
-        File noSuchFile = new File("this_file_does_not_exist.txt");
+    public void testOrderConstructorAndFamilyGetter() {
+        Order testOrder = new Order(FAMILY);
 
         Order()
         // Variables for status

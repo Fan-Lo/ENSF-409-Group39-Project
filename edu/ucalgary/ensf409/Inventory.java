@@ -10,6 +10,6 @@ public class Inventory {
     }
     
     public void addToInventory(FoodItem item) {
-
+        inventory.add(item);
     }
 }
