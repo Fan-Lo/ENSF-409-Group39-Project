@@ -9,7 +9,8 @@ public class Inventory {
         inventory = new ArrayList<>();
     }
     
-    public void addToInventory(FoodItem item) {
-        inventory.add(item);
+    public void addToInventory(int grain, int fv, int pro, int other, int cal, String name, int ID) {
+        inventory.add(new FoodItem(grain, fv, pro, other, cal, name, ID));
     }
+
 }
