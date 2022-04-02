@@ -15,7 +15,7 @@ public class PersonTest {
 		int clientID = 1;
         Person testPerson = new Person(nutrition, clientID);
 
-		// Assert that Person constructor creates a valid Object
+	    // Assert that Person constructor creates a valid Object
         assertNotNull("The Person object is null.", testPerson); 
     }
 	
