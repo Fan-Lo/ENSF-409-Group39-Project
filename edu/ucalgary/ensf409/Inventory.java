@@ -13,4 +13,7 @@ public class Inventory {
         inventory.add(new FoodItem(grain, fv, pro, other, cal, name, ID));
     }
 
+    public boolean removeItems(FoodItem item) {
+        return inventory.remove(item);
+    }
 }

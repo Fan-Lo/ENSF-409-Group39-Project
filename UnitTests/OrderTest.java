@@ -1,3 +1,8 @@
+/**
+ * @version 1.1
+ * @Since 1.0
+ */
+
 package UnitTests;
 import org.junit.*;
 
@@ -69,7 +74,7 @@ public class OrderTest {
     @Test
     public void testRemoveFromInventory() {
         
-        inv.addToInventory("Tomato Sauce", 0, 80, 10, 10, 120, 1);
+        inv.addToInventory( 0, 80, 10, 10, 120, "Tomato Sauce", 1);
         Order testOrder = new Order(family, inv);
         FoodItem itemInInventory = new FoodItem(0, 80, 10, 10, 120, "Tomato Sauce", 1);
         FoodItem itemNotInInventory = new FoodItem(0, 100, 0, 0, 624, "Apple Dozen", 5);

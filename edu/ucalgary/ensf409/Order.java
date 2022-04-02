@@ -33,7 +33,7 @@ public class Order {
 
     public void removeFromInventory(ArrayList<FoodItem> itemAL) {
         for (int i = 0; i < itemAL.size(); i++) {
-            inventory.removeItems()
+            inventory.removeItems(itemAL.get(i));
         }
     }
 }
