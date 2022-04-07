@@ -8,18 +8,21 @@ import java.awt.FlowLayout;
 
 public class GUI extends JFrame implements ActionListener, MouseListener{
 
+    private int numHampers;
     private int numAMale;
     private int numAFemale;
     private int numChildA8;
     private int numChildU8;
     
     private JLabel instructions;
+    private JLabel numHampersLabel;
     private JLabel numAMaleLabel;
     private JLabel numAFemaleLabel;
     private JLabel numChildA8Label;
     private JLabel numChildU8Label;
     
     private JTextField numAMaleInput;
+    private JTextField numHampersInput;
     private JTextField numAFemaleInput;
     private JTextField numChildA8Input;
     private JTextField numChildU8Input;
@@ -35,11 +38,13 @@ public class GUI extends JFrame implements ActionListener, MouseListener{
     public void setupGUI(){
         
         instructions = new JLabel("Enter Hamper Info");
+        numHampersLabel = new JLabel("# of Hampers to Create:");
         numAMaleLabel = new JLabel("# of Adult Males:");
         numAFemaleLabel = new JLabel("# of Adult Females:");
         numChildA8Label = new JLabel("# Child Above 8:");
         numChildU8Label = new JLabel("# Child Under 8:");
         
+        numHampersInput = new JTextField("e.g. 1", 15);
         numAMaleInput = new JTextField("e.g. 1", 15);
         numAFemaleInput = new JTextField("e.g. 1", 15);
         numChildA8Input = new JTextField("e.g. 1", 15);
@@ -49,6 +54,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener{
         numAFemaleInput.addMouseListener(this);
         numChildA8Input.addMouseListener(this);
         numChildU8Input.addMouseListener(this);
+        numHampersInput.addMouseListener(this);
         
         JButton submitInfo = new JButton("Generate Hamper");
         submitInfo.addActionListener(this);
@@ -71,6 +77,8 @@ public class GUI extends JFrame implements ActionListener, MouseListener{
         clientPanel.add(numChildA8Input);
         clientPanel.add(numChildU8Label);
         clientPanel.add(numChildU8Input);
+        clientPanel.add(numHampersLabel);
+        clientPanel.add(numHampersInput);
         submitPanel.add(submitInfo);
         
         this.add(headerPanel, BorderLayout.NORTH);
@@ -82,11 +90,12 @@ public class GUI extends JFrame implements ActionListener, MouseListener{
         numAFemale = Integer.parseInt(numAFemaleInput.getText());
         numAMale = Integer.parseInt(numAMaleInput.getText());
         numChildA8 = Integer.parseInt(numChildA8Input.getText());
-        numChildA8 = Integer.parseInt(numChildU8Input.getText());
+        numChildU8 = Integer.parseInt(numChildU8Input.getText());
+        numHampers = Integer.parseInt(numHampersInput.getText());
         
         if(validateInput()){
             String petID = idProcessing();
-            JOptionPane.showMessageDialog(this, "Created Hamper For: \n" + petID);
+            JOptionPane.showMessageDialog(this, "CreatedHamper: \n" + petID);
         }
     }
     
@@ -95,7 +104,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener{
         if(event.getSource().equals(numAMaleInput))
             numAMaleInput.setText("");
 
-        if(event.getSource().equals(numAFemale))
+        if(event.getSource().equals(numAFemaleInput))
             numAFemaleInput.setText("");
 
         if(event.getSource().equals(numChildA8Input))
@@ -103,6 +112,9 @@ public class GUI extends JFrame implements ActionListener, MouseListener{
 
         if(event.getSource().equals(numChildU8Input))
             numChildU8Input.setText("");
+
+        if(event.getSource().equals(numHampersInput))
+            numHampersInput.setText("");
                 
     }
     
@@ -119,8 +131,9 @@ public class GUI extends JFrame implements ActionListener, MouseListener{
         String message = new String(
             "Adult Males: "+ String.valueOf(numAMale) + "\n"+
             "Adult Females: "+String.valueOf(numAFemale) + "\n"+
-            "Child Above 8" + String.valueOf(numChildA8) + "\n"+
-            "Child Under 8" + String.valueOf(numChildU8)
+            "Child Above 8: " + String.valueOf(numChildA8) + "\n"+
+            "Child Under 8: " + String.valueOf(numChildU8) + "\n"+
+            String.valueOf(numHampers) + " times"
         );
         
         return message;
@@ -148,6 +161,11 @@ public class GUI extends JFrame implements ActionListener, MouseListener{
         if(numChildU8 < 0){
             allInputValid = false;
             JOptionPane.showMessageDialog(this, numChildU8 + " is an invalid Child Under 8 input.");
+        }
+
+        if(numHampers < 0){
+            allInputValid = false;
+            JOptionPane.showMessageDialog(this, numHampers + " is an invalid Number of Hampers input.");
         }
         
         return allInputValid;
