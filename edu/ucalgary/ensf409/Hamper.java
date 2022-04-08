@@ -5,7 +5,7 @@ public class Hamper {
     private ArrayList<FoodItem> foodItems = null;
     private int wastedCalories;
     private Nutrition nutritionalRequirement;
-    private final Inventory inventory;
+    private static Inventory inventory;
 
     public Hamper(Nutrition needs, Inventory inventory) {
         this.nutritionalRequirement = needs;
