@@ -1,3 +1,10 @@
+/**
+@author     Nooreldeen Abdallah
+href= "mailto:nooreldeen.abdallah@ucalgary.ca">nooreldeen.abdallah@ucalgary.ca</a>
+@version    1.2
+@since      1.0
+ */
+
 package edu.ucalgary.ensf409;
 
 import java.awt.BorderLayout;
@@ -94,8 +101,8 @@ public class GUI extends JFrame implements ActionListener, MouseListener{
         numHampers = Integer.parseInt(numHampersInput.getText());
         
         if(validateInput()){
-            String petID = idProcessing();
-            JOptionPane.showMessageDialog(this, "CreatedHamper: \n" + petID);
+            String msg = idProcessing();
+            JOptionPane.showMessageDialog(this, "CreatedHamper: \n" + msg);
         }
     }
     
