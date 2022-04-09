@@ -1,4 +1,11 @@
-package edu.ucalgary.ensf409;
+/**
+@author     Nooreldeen Abdallah
+href= "mailto:nooreldeen.abdallah@ucalgary.ca">nooreldeen.abdallah@ucalgary.ca</a>
+@version    1.4
+@since      1.0
+ */
+
+ package edu.ucalgary.ensf409;
 
 import java.util.*;
 public class Hamper {
@@ -19,7 +26,6 @@ public class Hamper {
     public ArrayList<FoodItem> getFood(){
         return this.foodItems;
     }
-
 
     // Returns the sum of all calories in this hamper
     public Nutrition calculateNutrition(){
@@ -50,8 +56,17 @@ public class Hamper {
         return disp.substring(0, disp.length()-1);
     }
 
-    // TODO: this
+    // // Returns the total wasted calories from each catagory
     public int calculateWaste(){
+        var nutritionInHamper = calculateNutrition();
+        this.wastedCalories = 0;
+
+        wastedCalories += nutritionInHamper.getWholeGrain() - nutritionalRequirement.getWholeGrain();
+        wastedCalories += nutritionInHamper.getFruitsVeggies() - nutritionalRequirement.getFruitsVeggies();
+        wastedCalories += nutritionInHamper.getProtein() - nutritionalRequirement.getProtein();
+        wastedCalories += nutritionInHamper.getOther() - nutritionalRequirement.getOther();
+        wastedCalories += nutritionInHamper.getCalories() - nutritionalRequirement.getCalories();
+
         return this.wastedCalories;
     }
 }
