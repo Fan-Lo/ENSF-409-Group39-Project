@@ -5,12 +5,9 @@ public class Hamper {
     private ArrayList<FoodItem> foodItems = null;
     private int wastedCalories;
     private Nutrition nutritionalRequirement;
-    private static Inventory inventory;
 
-    public Hamper(Nutrition needs, Inventory inventory) {
+    public Hamper(Nutrition needs) {
         this.nutritionalRequirement = needs;
-        this.inventory = inventory;
-        genHamper();
     }
 
     //adds a food item to ArrayList
@@ -24,33 +21,36 @@ public class Hamper {
     }
 
 
-
-
-
-    // TODO: algorithm to generate hamper
-    // I am assuming that myInv is an array of food items (obtained from DB),
-    // when an item is removed from myInv, it isn't replenished
-    // between calls of genHamper.
-    public void genHamper(){
-
-        //Example of my thoughts
-        ArrayList<FoodItem> myInv = new ArrayList<FoodItem>();
-
-        int calGoal = nutritionalRequirement.getCalories();
-
-        for (int i = 0; i <myInv.size(); i++){
-            var item = myInv.remove(i);
-            calGoal -= item.getNutrition().getCalories();
-            foodItems.add(item);
-            if(calGoal <=0){
-                break;
-            }
+    // Returns the sum of all calories in this hamper
+    public Nutrition calculateNutrition(){
+        int grain = 0;
+        int frVg = 0;
+        int pro = 0;
+        int other = 0;
+        int cals =0;
+        for(var item : foodItems){
+            var currNut = item.getNutrition();
+            grain += currNut.getWholeGrain();
+            frVg += currNut.getFruitsVeggies();
+            pro += currNut.getProtein();
+            other += currNut.getOther();
+            cals += currNut.getCalories();
         }
-        
-        this.wastedCalories= calGoal*-1;
+        Nutrition totalHampeNutrition = new Nutrition(grain, frVg, pro, other, cals);
+        return totalHampeNutrition;
     }
-    
-    // TODO: calculation of wastes
+
+    // Returns food names sperated by a comma
+    public String displayHamper(){
+        String disp = "";
+        for(var item : foodItems){
+            disp += item.getName() + ", ";
+        }
+
+        return disp.substring(0, disp.length()-1);
+    }
+
+    // TODO: this
     public int calculateWaste(){
         return this.wastedCalories;
     }
