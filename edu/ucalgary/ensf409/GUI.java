@@ -1,8 +1,8 @@
 /**
 @author     Nooreldeen Abdallah
 href= "mailto:nooreldeen.abdallah@ucalgary.ca">nooreldeen.abdallah@ucalgary.ca</a>
-@version    1.2
-@since      1.0
+@version    1.8
+@since      1.2
  */
 
 package edu.ucalgary.ensf409;
@@ -33,15 +33,19 @@ public class GUI extends JFrame implements ActionListener, MouseListener{
     private JTextField numAFemaleInput;
     private JTextField numChildA8Input;
     private JTextField numChildU8Input;
+
+    private Family family;
     
+    // constructor
     public GUI(){
         super("Create a Hamper");
         setupGUI();
-        setSize(200,400);
+        setSize(250,400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        
         
     }
     
+    // displays GUI
     public void setupGUI(){
         
         instructions = new JLabel("Enter Hamper Info");
@@ -63,7 +67,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener{
         numChildU8Input.addMouseListener(this);
         numHampersInput.addMouseListener(this);
         
-        JButton submitInfo = new JButton("Generate Hamper");
+        JButton submitInfo = new JButton("Generate Hamper and Print Form");
         submitInfo.addActionListener(this);
         
         JPanel headerPanel = new JPanel();
@@ -93,19 +97,29 @@ public class GUI extends JFrame implements ActionListener, MouseListener{
         this.add(submitPanel, BorderLayout.PAGE_END);
     }
     
+    // runs when generate hamper button is clicked
     public void actionPerformed(ActionEvent event){
-        numAFemale = Integer.parseInt(numAFemaleInput.getText());
-        numAMale = Integer.parseInt(numAMaleInput.getText());
-        numChildA8 = Integer.parseInt(numChildA8Input.getText());
-        numChildU8 = Integer.parseInt(numChildU8Input.getText());
-        numHampers = Integer.parseInt(numHampersInput.getText());
+        try{
+            numAFemale = Integer.parseInt(numAFemaleInput.getText());
+            numAMale = Integer.parseInt(numAMaleInput.getText());
+            numChildA8 = Integer.parseInt(numChildA8Input.getText());
+            numChildU8 = Integer.parseInt(numChildU8Input.getText());
+            numHampers = Integer.parseInt(numHampersInput.getText());
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "All values must be Integers");
+        }
         
         if(validateInput()){
-            String msg = idProcessing();
-            JOptionPane.showMessageDialog(this, "CreatedHamper: \n" + msg);
+            generatFamily();
+            generatHamper();
+            printOrderForm();
+
+            String msg = dispMsg();
+            JOptionPane.showMessageDialog(this, "Created Hamper Info: \n" + msg);
         }
     }
     
+    //clears inputs so user can type
     public void mouseClicked(MouseEvent event){
         
         if(event.getSource().equals(numAMaleInput))
@@ -125,32 +139,34 @@ public class GUI extends JFrame implements ActionListener, MouseListener{
                 
     }
     
+    // ignores random mouse clicks
     public void mouseEntered(MouseEvent event){}
-
     public void mouseExited(MouseEvent event){}
-
     public void mousePressed(MouseEvent event){}
-
     public void mouseReleased(MouseEvent event){}
     
-    private String idProcessing(){
+
+    // displays input for debugging
+    private String dispMsg(){
 
         String message = new String(
             "Adult Males: "+ String.valueOf(numAMale) + "\n"+
             "Adult Females: "+String.valueOf(numAFemale) + "\n"+
             "Child Above 8: " + String.valueOf(numChildA8) + "\n"+
             "Child Under 8: " + String.valueOf(numChildU8) + "\n"+
-            String.valueOf(numHampers) + " times"
+            String.valueOf(numHampers) + " time(s)"
         );
         
         return message;
     }    
     
+    // checks all the obtained values and shows an error 
+    // if an invalid input is obtained 
     private boolean validateInput(){
         
         boolean allInputValid = true;
         
-        if(numAMale < 0){
+        if(numAMale < 0 ){
             allInputValid = false;
             JOptionPane.showMessageDialog(this, numAMale + " is an invalid Adult Male input.");
         }
@@ -170,16 +186,37 @@ public class GUI extends JFrame implements ActionListener, MouseListener{
             JOptionPane.showMessageDialog(this, numChildU8 + " is an invalid Child Under 8 input.");
         }
 
-        if(numHampers < 0){
+        if(numHampers < 1){
             allInputValid = false;
             JOptionPane.showMessageDialog(this, numHampers + " is an invalid Number of Hampers input.");
         }
+
+        if(numAMale == 0 && numAFemale == 0 && numChildA8 == 0 && numChildU8 == 0){
+            allInputValid = false;
+            JOptionPane.showMessageDialog(this, "Family should have at least one person");
+        }
         
         return allInputValid;
+    }
+
+
+    //Creates a new family
+    private void generatFamily(){
+        family = new Family(numAMale, numAFemale, numChildA8, numChildU8);
+    }
+
+    //Creates the least wasteful hamper
+    private void generatHamper(){
+        family.CreatedHamper();
+    }
+
+    //TODO:  this
+    private void printOrderForm(){
         
     }
 
     
+    // command line args are ignored
     public static void main(String[] args) {
         
         EventQueue.invokeLater(() -> {
