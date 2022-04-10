@@ -15,6 +15,5 @@ public class Family {
     }
 
     public void CreatedHamper() {
-
     }
 }
