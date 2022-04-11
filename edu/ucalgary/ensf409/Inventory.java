@@ -31,7 +31,7 @@ public class Inventory {
     /**
      * Removes item from the ArrayList inventory
      */
-    public boolean removeItems(FoodItem item) {
+    public boolean removeItem(FoodItem item) {
         boolean isRemoved = inventory.remove(item); // true if an item is removed from the ArrayList. Otherwise, false.
         return isRemoved;
     }

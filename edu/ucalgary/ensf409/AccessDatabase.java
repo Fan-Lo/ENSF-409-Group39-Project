@@ -39,30 +39,6 @@ public class AccessDatabase{
         return this.PASSWORD;
     }
 
-    // may not need this function
-    public void insertFoodItem(FoodItem item) {
-        try {
-            String query = "INSERT INTO AVAILABLE_FOOD (ItemID, Name, GrainContent, FVContent, ProConetent, Other, Calories) VALUES (?,?,?,?,?,?,?)";
-            PreparedStatement myStmt = dbConnect.prepareStatement(query);
-
-            Nutrition itemNutrition = item.getNutrition();
-            myStmt.setInt(1, item.getItemID());
-            myStmt.setString(2, item.getName());
-            myStmt.setInt(3, itemNutrition.getWholeGrain());
-            myStmt.setInt(4, itemNutrition.getFruitsVeggies());
-            myStmt.setInt(5, itemNutrition.getProtein());
-            myStmt.setInt(6, itemNutrition.getOther());
-            myStmt.setInt(7, itemNutrition.getCalories());
-
-            int rowCount = myStmt.executeUpdate();
-
-            myStmt.close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     // delete the item based on ItemID
     public void deleteFoodItem(int itemID) {
         try{

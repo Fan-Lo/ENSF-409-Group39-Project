@@ -51,7 +51,7 @@ public class Order {
     private void removeFromInventory(ArrayList<FoodItem> itemToRemove) throws ItemNotFoundException {
         boolean bool;
         for (int i = 0; i < itemToRemove.size(); i++) {
-            bool = inventory.removeItems(itemToRemove.get(i));
+            bool = inventory.removeItem(itemToRemove.get(i));
             if (!bool) {
                 // restore all removed items
                 inventory.restoreRemovedItems(itemToRemove.subList(0, i-1));
