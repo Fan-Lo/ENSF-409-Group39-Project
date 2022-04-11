@@ -1,8 +1,8 @@
 /**
 @author     Justin Kuhn
 href= "mailto:justinkuhn@ucalgary.ca">justin.kuhn@ucalgary.ca</a>
-@version    1.3
-@since      1.2
+@version    1.4
+@since      1.3
  */
 
 package edu.ucalgary.ensf409;
@@ -108,4 +108,7 @@ public class Family{
         }
         return minHampers;
     }
+	public Hamper getHamper(){
+		return this.hamper;
+	}
 }
