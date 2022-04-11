@@ -1,8 +1,7 @@
 /** 
 * FoodItemTest.java
-* @version 1.1
+* @version 1.2
 * @since 1.0	
-* First draft of class FoodItemTest
 **/  
 
 package edu.ucalgary.ensf409;
@@ -39,11 +38,31 @@ public class FoodItemTest {
     // Tests that getNutrition() method returns the correct Nutrition objects
     @Test
     public void testGetNutrition(){
-        Nutrition expectedNutrition = new Nutrition(0, 80, 10, 10, 120);
+        Nutrition testNutrition = new Nutrition(0, 80, 10, 10, 120);
         Nutrition actualNutrition = item.getNutrition();
 
-        // Asserts that the expectedNutrition and actualNutrition are the same
-        assertEquals("getNutrition() returned the wrong value.", expectedNutrition, actualNutrition);
+        int expectedGrain = 0;
+        int actualGrain = actualNutrition.getWholeGrain();
+
+        int expectedFV = 80;
+        int actualFV = actualNutrition.getFruitsVeggies();
+
+        int expectedProtein = 10;
+        int actualProtein = actualNutrition.getProtein();
+
+        int expectedOther = 10;
+        int actualOther = actualNutrition.getOther();
+
+        int expectedCal = 120;
+        int actualCal = actualNutrition.getCalories();
+
+
+        // Asserts that the expectedNutrition and actualNutrition are the same by checking the nutritional values
+        assertEquals("getNutrition() returned the value.", expectedGrain, actualGrain);
+        assertEquals("getNutrition() returned the value.", expectedFV, actualFV);
+        assertEquals("getNutrition() returned the value.", expectedProtein, actualProtein);
+        assertEquals("getNutrition() returned the value.", expectedOther, actualOther);
+        assertEquals("getNutrition() returned the value.", expectedCal, actualCal);
 
     }
 
