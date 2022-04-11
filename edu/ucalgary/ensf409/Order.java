@@ -57,6 +57,7 @@ public class Order {
                 throw new ItemNotFoundException(itemToRemove.get(i).getName());
             }
         }
+        inventory.removeFromDatabase(itemToRemove);  // bool == true when it reaches this point so we remove all items from the database
     }
 
     public String displayFamilyInfo(Family family) {
