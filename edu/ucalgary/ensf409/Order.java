@@ -47,6 +47,7 @@ public class Order {
         return true;
     }
 
+    // overloaded function that does the actual removal 
     private void removeFromInventory(ArrayList<FoodItem> itemToRemove) throws ItemNotFoundException {
         boolean bool;
         for (int i = 0; i < itemToRemove.size(); i++) {

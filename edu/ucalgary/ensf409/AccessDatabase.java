@@ -63,7 +63,7 @@ public class AccessDatabase{
         }
     }
 
-    // delete the first occurence of the item
+    // delete the item based on ItemID
     public void deleteFoodItem(int itemID) {
         try{
             String query = "DELETE FROM AVAILABLE_FOOD WHERE ItemID = ?";
