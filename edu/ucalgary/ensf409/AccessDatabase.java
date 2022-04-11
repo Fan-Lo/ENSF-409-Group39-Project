@@ -64,12 +64,12 @@ public class AccessDatabase{
     }
 
     // delete the first occurence of the item
-    public void deleteFoodItem(String name) {
+    public void deleteFoodItem(int itemID) {
         try{
-            String query = "DELETE FROM AVAILABLE_FOOD WHERE Name = ?";
+            String query = "DELETE FROM AVAILABLE_FOOD WHERE ItemID = ?";
             PreparedStatement myStmt = dbConnect.prepareStatement(query);
 
-            myStmt.setString(1, name);
+            myStmt.setInt(1, itemID);
 
             int rowCount = myStmt.executeUpdate();
 
