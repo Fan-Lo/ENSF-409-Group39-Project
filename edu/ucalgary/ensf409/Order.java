@@ -2,7 +2,7 @@ package edu.ucalgary.ensf409;
 import java.util.*;
 
 public class Order {
-    private ArrayList<Family> families;
+    private ArrayList<Family> families = new ArrayList<Family>();
     private static Inventory inventory;
 
     // constructor
@@ -47,11 +47,10 @@ public class Order {
         return true;
     }
 
-    // overloaded function that does the actual removal 
     private void removeFromInventory(ArrayList<FoodItem> itemToRemove) throws ItemNotFoundException {
         boolean bool;
         for (int i = 0; i < itemToRemove.size(); i++) {
-            bool = inventory.removeItem(itemToRemove.get(i));
+            bool = inventory.removeItems(itemToRemove.get(i));
             if (!bool) {
                 // restore all removed items
                 inventory.restoreRemovedItems(itemToRemove.subList(0, i-1));
@@ -93,10 +92,10 @@ public class Order {
 
     public String displayOrder() {
         // if can't remove all items from inventory
-        if (!removeFromInventory()) {
+       /* if (!removeFromInventory()) {
             System.out.println("Order Cannot Be Completed");
             return null;
-        }
+        } */
         String str = "Hamper Order Form\n";
         String hamperContent = "";
         str += "Name:\n";

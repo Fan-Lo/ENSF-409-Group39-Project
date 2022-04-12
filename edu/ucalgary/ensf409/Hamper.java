@@ -1,72 +1,77 @@
-/**
-@author     Nooreldeen Abdallah
-href= "mailto:nooreldeen.abdallah@ucalgary.ca">nooreldeen.abdallah@ucalgary.ca</a>
-@version    1.4
-@since      1.0
- */
-
- package edu.ucalgary.ensf409;
+package edu.ucalgary.ensf409;
 
 import java.util.*;
-public class Hamper {
-    private ArrayList<FoodItem> foodItems = null;
-    private int wastedCalories;
-    private Nutrition nutritionalRequirement;
 
-    public Hamper(Nutrition needs) {
-        this.nutritionalRequirement = needs;
-    }
+public class Hamper{
 
-    //adds a food item to ArrayList
-    public void addFood(FoodItem item){
-        foodItems.add(item);
-    }
-
-    //returns food ArrayList
-    public ArrayList<FoodItem> getFood(){
-        return this.foodItems;
-    }
-
-    // Returns the sum of all calories in this hamper
-    public Nutrition calculateNutrition(){
-        int grain = 0;
-        int frVg = 0;
-        int pro = 0;
-        int other = 0;
-        int cals =0;
-        for(var item : foodItems){
-            var currNut = item.getNutrition();
-            grain += currNut.getWholeGrain();
-            frVg += currNut.getFruitsVeggies();
-            pro += currNut.getProtein();
-            other += currNut.getOther();
-            cals += currNut.getCalories();
-        }
-        Nutrition totalHampeNutrition = new Nutrition(grain, frVg, pro, other, cals);
-        return totalHampeNutrition;
-    }
-
-    // Returns food names sperated by a comma
-    public String displayHamper(){
-        String disp = "";
-        for(var item : foodItems){
-            disp += item.getName() + ", ";
-        }
-
-        return disp.substring(0, disp.length()-1);
-    }
-
-    // // Returns the total wasted calories from each catagory
-    public int calculateWaste(){
-        var nutritionInHamper = calculateNutrition();
-        this.wastedCalories = 0;
-
-        wastedCalories += nutritionInHamper.getWholeGrain() - nutritionalRequirement.getWholeGrain();
-        wastedCalories += nutritionInHamper.getFruitsVeggies() - nutritionalRequirement.getFruitsVeggies();
-        wastedCalories += nutritionInHamper.getProtein() - nutritionalRequirement.getProtein();
-        wastedCalories += nutritionInHamper.getOther() - nutritionalRequirement.getOther();
-        wastedCalories += nutritionInHamper.getCalories() - nutritionalRequirement.getCalories();
-
-        return this.wastedCalories;
-    }
+	private ArrayList<FoodItem> items = new ArrayList<FoodItem>();
+	private int grain = 0;
+	private int fruit = 0;
+	private int protein = 0;
+	private int other = 0;
+	private int totalCals = Integer.MAX_VALUE;
+	
+	public Hamper(){
+		
+	}
+	//Copy constructor needed for the algorithm to work
+	public Hamper(Hamper hamper){
+		this.items = new ArrayList<FoodItem>();
+		Iterator<FoodItem> myIterator = hamper.getFood().iterator();
+		while(myIterator.hasNext()){
+			this.items.add(new FoodItem(myIterator.next()));
+		}
+		this.grain = hamper.getGrain();
+		this.fruit = hamper.getFruit();
+		this.protein = hamper.getProtein();
+		this.other = hamper.getOther();
+		this.totalCals = hamper.getCalories();
+	}
+	public void addFood(FoodItem item){
+		this.items.add(item);
+		this.grain += item.getNutrition().getWholeGrain();
+		this.fruit += item.getNutrition().getFruitsVeggies();
+		this.protein += item.getNutrition().getProtein();
+		this.other += item.getNutrition().getOther();
+		if(this.totalCals == Integer.MAX_VALUE)
+			this.totalCals = 0;
+		this.totalCals += item.getNutrition().getCalories();
+	}
+	public ArrayList<FoodItem> getFood(){
+		return this.items;
+	}
+	public int getCalories(){
+		return this.totalCals;
+	}
+	//Setter which is also needed for the algorithm to work
+	public void setCalories(int cals){
+		this.totalCals = cals;
+	}
+	public int getGrain(){
+		return this.grain;
+	}
+	public int getFruit(){
+		return this.fruit;
+	}
+	public int getProtein(){
+		return this.protein;
+	}
+	public int getOther(){
+		return this.other;
+	}
+	//Similar to display function, which I used for testing purposes
+	public String displayHamper(){
+		String result = "";
+		Iterator<FoodItem> myIterator = this.items.iterator();
+		while(myIterator.hasNext()){
+			result += myIterator.next().getName() + "\n";
+		}
+		//result += "\tGrain: " + grain + ", Fruit: " + fruit + ", Protein: " + protein + ", Other: " + other + ", Total: " + totalCals;
+		return result;
+	}
+	//Used for determining the most efficient hamper, by passing in the total calories required and taking the difference.
+	public int calculateWaste(int calories){
+		return this.totalCals - calories;
+	}
+	
 }

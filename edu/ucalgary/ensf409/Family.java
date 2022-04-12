@@ -1,8 +1,8 @@
 /**
 @author     Justin Kuhn
 href= "mailto:justinkuhn@ucalgary.ca">justin.kuhn@ucalgary.ca</a>
-@version    1.4
-@since      1.3
+@version    1.3
+@since      1.2
  */
 
 package edu.ucalgary.ensf409;
@@ -25,7 +25,7 @@ public class Family{
 	public int getWeeklyGrainNeeds(){
 		int grain = 0;
 		for(int i = 0; i < familyMembers.size(); i++){
-			grain += familyMembers.get(i).getNutritionalNeeds().getGrain();
+			grain += familyMembers.get(i).getNutritionalNeeds().getWholeGrain();
 		}
 		return grain*7;
 	}
@@ -61,8 +61,9 @@ public class Family{
 		return this.familyMembers;
 	}
 	public void createHamper(Inventory inventory){
+		int totalNeeds = this.getWeeklyCalorieNeeds();
 		ArrayList<FoodItem> foodAsList = inventory.getFood();
-		ArrayList<Hamper> needsSet = optimizeCals(totalNeeds, grainNeeds, fruitNeeds, proteinNeeds, otherNeeds, foodAsList);
+		ArrayList<Hamper> needsSet = optimizeCals(foodAsList);
 		
 		Hamper mostEfficient = needsSet.get(0);
 		
@@ -71,14 +72,16 @@ public class Family{
 				mostEfficient = needsSet.get(i);
 			}
 		}
-		System.out.println("\nThe hamper: " + mostEfficient.toString() + " is the most efficient as it has " + mostEfficient.calculateWaste(totalNeeds) + " excess.");
+		//System.out.println("\nThe hamper: " + mostEfficient.toString() + " is the most efficient as it has " + mostEfficient.calculateWaste(totalNeeds) + " excess.");
 		this.hamper = mostEfficient; 
 	}
 	
-	private ArrayList<Hamper> optimizeCals(int minCals, int grain, int fruit, int protein, int other, ArrayList<FoodItem> foods) {
-        int maxCals = 0;
+	private ArrayList<Hamper> optimizeCals(ArrayList<FoodItem> foods) {
+        int maxCals = 0, minCals = this.getWeeklyCalorieNeeds(), grain = this.getWeeklyGrainNeeds(), fruit = this.getWeeklyVeggieNeeds(),
+		protein = this.getWeeklyProteinNeeds(), other = this.getWeeklyOtherNeeds();
+		
 		for(int i = 0; i < foods.size(); i++){
-            maxCals += foods.get(i).getCalories();
+            maxCals += foods.get(i).getNutrition().getCalories();
         }
         ArrayList<Hamper> hamperCombinations = new ArrayList<Hamper>(maxCals + 1);
 		
@@ -88,9 +91,9 @@ public class Family{
 		hamperCombinations.get(0).setCalories(0);
 		
         for(int i = 0; i < foods.size(); i++){
-            for(int j = maxCals; j >= foods.get(i).getCalories(); j--){
-                if(hamperCombinations.get(j - foods.get(i).getCalories()).getCalories() != Integer.MAX_VALUE){
-					Hamper testHamper = new Hamper(hamperCombinations.get(j - foods.get(i).getCalories()));
+            for(int j = maxCals; j >= foods.get(i).getNutrition().getCalories(); j--){
+                if(hamperCombinations.get(j - foods.get(i).getNutrition().getCalories()).getCalories() != Integer.MAX_VALUE){
+					Hamper testHamper = new Hamper(hamperCombinations.get(j - foods.get(i).getNutrition().getCalories()));
 					testHamper.addFood(foods.get(i));
 					if(testHamper.getCalories() < hamperCombinations.get(j).getCalories()){
 						hamperCombinations.set(j, testHamper);

@@ -1,44 +1,32 @@
-/** 
-* Nutrition.java
-* @version 1.0
-* @since 1.0	
-* First draft of class Nutrition
-**/   
-
 package edu.ucalgary.ensf409;
 
 public class Nutrition{
-	private int wholeGrainPercent;
-	private int fruitsVeggiesPercent;
-	private int proteinPercent;
-	private int otherPercent;
-	private int calories;
+	private int grainCals;
+	private int fruitCals;
+	private int proteinCals;
+	private int otherCals;
+	private int totalCals;
 	
-	public Nutrition(int wholeGrainPercent, int fruitsVeggiesPercent, int proteinPercent,
-	int otherPercent, int calories){
-		this.wholeGrainPercent = wholeGrainPercent;
-		this.fruitsVeggiesPercent = fruitsVeggiesPercent;
-		this.proteinPercent = proteinPercent;
-		this.otherPercent = otherPercent;
-		this.calories = calories;
+	public Nutrition(int grain, int fruit, int protein, int other, int total){
+		this.grainCals = (int)Math.ceil((grain/(double)100) * total);
+		this.fruitCals = (int)Math.ceil((fruit/(double)100) * total);
+		this.proteinCals = (int)Math.ceil((protein/(double)100) * total);
+		this.otherCals = (int)Math.ceil((other/(double)100) * total);
+		this.totalCals = total;
 	}
-	public Nutrition toWeeklyNeeds(){
-		return new Nutrition(wholeGrainPercent*7, fruitsVeggiesPercent*7,
-		proteinPercent*7, otherPercent*7, calories*7);
-	}
-	public int getGrain(){
-		return this.wholeGrainPercent;
+	public int getWholeGrain(){
+		return this.grainCals;
 	}
 	public int getFruitsVeggies(){
-		return this.fruitsVeggiesPercent;
+		return this.fruitCals;
 	}
 	public int getProtein(){
-		return this.proteinPercent;
+		return this.proteinCals;
 	}
 	public int getOther(){
-		return this.otherPercent;
+		return this.otherCals;
 	}
 	public int getCalories(){
-		return this.calories;
+		return this.totalCals;
 	}
 }

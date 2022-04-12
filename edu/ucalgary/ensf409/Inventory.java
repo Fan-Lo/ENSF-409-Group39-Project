@@ -8,7 +8,7 @@ package edu.ucalgary.ensf409;
 import java.util.*;
 
 public class Inventory {
-    private ArrayList<FoodItem> inventory = null; // meant to reflect the the available items in the inventory (database)
+    private ArrayList<FoodItem> inventory = new ArrayList<FoodItem>(); // meant to reflect the the available items in the inventory (database)
     private AccessDatabase database;
 
     /**
@@ -17,7 +17,7 @@ public class Inventory {
      * */ 
     public Inventory() {
         inventory = new ArrayList<>();
-        database = new AccessDatabase("jdbc:mysql://localhost/competition","student","ensf");
+        database = new AccessDatabase("jdbc:mysql://localhost/food_inventory","student","ensf");
         database.initializeConnection();
     }
     
@@ -27,11 +27,14 @@ public class Inventory {
     public void addToInventory(int grain, int fv, int pro, int other, int cal, String name, int ID) {
         inventory.add(new FoodItem(grain, fv, pro, other, cal, name, ID));
     }
+	public void populate(){
+		this.inventory = database.fetchItems();
+	}
 
     /**
      * Removes item from the ArrayList inventory
      */
-    public boolean removeItem(FoodItem item) {
+    public boolean removeItems(FoodItem item) {
         boolean isRemoved = inventory.remove(item); // true if an item is removed from the ArrayList. Otherwise, false.
         return isRemoved;
     }
@@ -53,5 +56,12 @@ public class Inventory {
         for(FoodItem item: itemToRemove){
             database.deleteFoodItem(item.getItemID());
         }
+    }
+	
+	 /**
+     * Returns the ArrayList of food in the inventory
+     */
+    public ArrayList<FoodItem> getFood() {
+        return this.inventory;
     }
 }

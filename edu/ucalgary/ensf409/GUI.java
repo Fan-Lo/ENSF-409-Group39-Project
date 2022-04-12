@@ -20,6 +20,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener{
     private int numAFemale;
     private int numChildA8;
     private int numChildU8;
+	private Inventory theInventory;
     
     private JLabel instructions;
     private JLabel numHampersLabel;
@@ -35,14 +36,14 @@ public class GUI extends JFrame implements ActionListener, MouseListener{
     private JTextField numChildU8Input;
 
     private Family family;
-    private Inventory inventory;
     
     // constructor
     public GUI(){
         super("Create a Hamper");
         setupGUI();
+		theInventory = new Inventory();
+		theInventory.populate();
         setSize(250,400);
-        setUpInventory();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        
         
     }
@@ -201,24 +202,29 @@ public class GUI extends JFrame implements ActionListener, MouseListener{
         return allInputValid;
     }
 
-    //Creates an Inventory
-    private void setUpInventory(){
-        this.inventory = new Inventory();
-    }
 
     //Creates a new family
     private void generatFamily(){
-        family = new Family(numAMale, numAFemale, numChildA8, numChildU8);
+		Nutrition maleNutrition = new Nutrition(16, 28, 26, 30, 500);
+		Nutrition femaleNutrition = new Nutrition(16, 28, 26, 30, 200);
+		Nutrition childOver8Nutrition = new Nutrition(21, 33, 31, 15, 2200);
+		Nutrition childUnder8Nutrition = new Nutrition(21, 33, 31, 15, 100);
+		
+        //family = new Family(numAMale, numAFemale, numChildA8, numChildU8);
+		family = new Family();
+		Person person = new Person(maleNutrition, 1);
+		family.addMember(person);
     }
 
     //Creates the least wasteful hamper
     private void generatHamper(){
-        family.createHamper(inventory);
+        family.createHamper(theInventory);
     }
 
-    //TODO:  this
+    //TODO: FORM NAME
     private void printOrderForm(){
-        
+        Order theOrder = new Order(family, theInventory);
+		OrderForm.formToTxtFile(theOrder, "order.txt");
     }
 
     
