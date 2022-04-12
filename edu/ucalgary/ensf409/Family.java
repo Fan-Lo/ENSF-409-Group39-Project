@@ -39,21 +39,21 @@ public class Family{
 	public int getWeeklyProteinNeeds(){
 		int protein = 0;
 		for(int i = 0; i < familyMembers.size(); i++){
-			veggie += familyMembers.get(i).getNutritionalNeeds().getProtein();
+			protein += familyMembers.get(i).getNutritionalNeeds().getProtein();
 		}
 		return protein*7;
 	}
 	public int getWeeklyOtherNeeds(){
 		int other = 0;
 		for(int i = 0; i < familyMembers.size(); i++){
-			veggie += familyMembers.get(i).getNutritionalNeeds().getOther();
+			other += familyMembers.get(i).getNutritionalNeeds().getOther();
 		}
 		return other*7;
 	}
 	public int getWeeklyCalorieNeeds(){
 		int calories = 0;
 		for(int i = 0; i < familyMembers.size(); i++){
-			veggie += familyMembers.get(i).getNutritionalNeeds().getCalories();
+			calories += familyMembers.get(i).getNutritionalNeeds().getCalories();
 		}
 		return calories*7;
 	}

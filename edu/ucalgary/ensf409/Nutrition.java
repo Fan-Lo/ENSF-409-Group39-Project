@@ -26,7 +26,7 @@ public class Nutrition{
 		return new Nutrition(wholeGrainPercent*7, fruitsVeggiesPercent*7,
 		proteinPercent*7, otherPercent*7, calories*7);
 	}
-	public int getWholeGrain(){
+	public int getGrain(){
 		return this.wholeGrainPercent;
 	}
 	public int getFruitsVeggies(){
