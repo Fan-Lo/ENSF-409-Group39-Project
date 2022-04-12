@@ -35,12 +35,14 @@ public class GUI extends JFrame implements ActionListener, MouseListener{
     private JTextField numChildU8Input;
 
     private Family family;
+    private Inventory inventory;
     
     // constructor
     public GUI(){
         super("Create a Hamper");
         setupGUI();
         setSize(250,400);
+        setUpInventory();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        
         
     }
@@ -199,6 +201,10 @@ public class GUI extends JFrame implements ActionListener, MouseListener{
         return allInputValid;
     }
 
+    //Creates an Inventory
+    private void setUpInventory(){
+        this.inventory = new Inventory();
+    }
 
     //Creates a new family
     private void generatFamily(){
@@ -207,7 +213,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener{
 
     //Creates the least wasteful hamper
     private void generatHamper(){
-        family.CreatedHamper();
+        family.createHamper(inventory);
     }
 
     //TODO:  this
