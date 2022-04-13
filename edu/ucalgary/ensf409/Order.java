@@ -92,7 +92,7 @@ public class Order {
 
     public String displayOrder() {
         // if can't remove all items from inventory
-       /* if (!removeFromInventory()) {
+        /* if (!removeFromInventory()) {
             System.out.println("Order Cannot Be Completed");
             return null;
         } */
