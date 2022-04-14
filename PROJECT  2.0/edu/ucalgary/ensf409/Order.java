@@ -1,23 +1,42 @@
 package edu.ucalgary.ensf409;
 import java.util.*;
 
+/**
+ * the Order class takes has member variable families, which is an array list of 
+ * Family objects, and inventory, which is an Inventory object. Order handles calls
+ * the getHamper method for each Family object in the families vairable, and 
+ * removes all items present in the generated hamper from the Inventory object. It
+ * will not remove any items in a particular hamper if the FoodItem is not found
+ * in the inventory.
+ * <p>
+ @author Fanny Lo <a href="mailto:fanny.lo@ucalgary.ca"> fanny.lo@ucalgary.ca<a>
+ @version 1.4
+ @since 1.0
+ */
 public class Order {
     private ArrayList<Family> families = new ArrayList<Family>();
     private static Inventory inventory;
 
 
+    // constructor
     public Order(Family family) {
         this.families.add(family);
         inventory = new Inventory(); // this creates a connection to the database 
     }
 
+    /**
+     * Adds the given Family object into families
+     * @param family
+     */
     public void addFamily(Family family) {
         this.families.add(family);
     }
 
+    // getter for families
     public ArrayList<Family> getFamiles() {
         return this.families;
     }
+
 
     public void generateHampers() throws ItemNotFoundException{
 
@@ -41,6 +60,11 @@ public class Order {
     }
 
 
+    /**
+     * This is the driver code for removing all FoodItem objects in hampers generated
+     * for each family included in families. 
+     * @return a boolean value of whether the removal of all items is successful
+     */
     public boolean removeFromInventory(Family fam) {
         Hamper hamper = fam.getHamper();
         try {
@@ -54,6 +78,13 @@ public class Order {
 
     }
 
+    /**
+     * Helper function for removeFromInventory(). This method takes an argument of
+     * array list of food item, and remove each item from the inventory. 
+     * @param itemToRemove is the array list of items to be removed.
+     * @throws ItemNotFoundException is thrown when the item is not found in the 
+     * inventory. Exception handling is done by the driver code of removeFromInventory() above.
+     */
     private void removeFromInventory(ArrayList<FoodItem> itemToRemove) throws ItemNotFoundException {
         boolean bool;
         for (int i = 0; i < itemToRemove.size(); i++) {
@@ -66,40 +97,13 @@ public class Order {
         }
     }
 
-    // YOU COULD DELETE THIS OR TRANSFER IN FAMILY.JAVA IF NEEDED
-    // Note: displayOrder() already fetches the number of members in each family
-    /*
-    public String displayFamilyInfo(Family family) {
-        String str = "";
-        ArrayList<Person> familyMembers = family.getFamilyMembers();
-        // index 0 is adult male, 1 is adult female, 3 is child over 8, 4 is child under 8
-        int[] numOfPerson = new int[4];
-        for (int i = 0; i < familyMembers.size(); i++) {
-            int index = familyMembers.get(i).getClientID() - 1;
-            numOfPerson[index]++;
-        }
-        
-        for (int i = 0; i < numOfPerson.length; i++) {
-            if (numOfPerson[i] != 0) {
-                // not the first time in this loop, put ,
-                if (str != "") {
-                    str += ", ";
-                }
-                if (i == 0) {
-                    str += numOfPerson[i] + " Adult Male";
-                } else if (i == 1) {
-                    str += numOfPerson[i] + " Adult Female";
-                } else if (i == 2) {
-                    str += numOfPerson[i] + " Child over 8";
-                } else {
-                    str += numOfPerson[i] + " Child under 8";
-                }
-            }
-        }
-        return str;
-    }
-    */
 
+
+    /**
+     * Returns a String containing containing all details of the Order form.
+     * Including family composition and hamper composition.
+     * @return String
+     */
     public String displayOrder() {
         String str = "Hamper Order Form\n";
         String hamperContent = "";
