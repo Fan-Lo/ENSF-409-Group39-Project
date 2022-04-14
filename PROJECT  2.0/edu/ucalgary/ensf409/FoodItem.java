@@ -19,15 +19,6 @@ public class FoodItem {
         this.ITEM_ID = itemID;
         this.NUTRITION = new Nutrition(wholeGrain, fruitsVeggies, protein, other, calories);
     }
-    
-	/**
-     * Copy Constructor of a FoodItem object
-     */
-	public FoodItem(FoodItem item){
-		this.name = item.getName();
-		this.ITEM_ID = item.getItemID();
-		this.NUTRITION = new Nutrition(item.getNutrition().getWholeGrain(), item.getNutrition().getFruitsVeggies(), item.getNutrition().getProtein(), item.getNutrition().getOther(), item.getNutrition().getCalories());
-	}
 
     /**
      *Getter of ITEM_ID
