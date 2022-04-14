@@ -83,7 +83,7 @@ VALUES
 ('Pasta, dry, two pounds', 75, 0, 13, 12, 3366), 
 ('Oatmeal cookies, dozen', 69, 0, 6, 25, 2436), 
 ('Peanut butter, 2 kg jar', 0, 0, 23, 78, 11940), 
-/*('Bran flakes, 1 kg', 90, 0, 10, 0, 3520), 
+('Bran flakes, 1 kg', 90, 0, 10, 0, 3520), 
 ('Nutella, 1 kg', 0, 0, 7, 93, 5330), 
 ('Ground pork, pound', 0, 0, 17, 83, 1193), 
 ('Meatballs, 1 kg', 0, 0, 14, 86, 2860), 
@@ -210,12 +210,14 @@ VALUES
 ('Flax oil, bottle', 0, 0, 0, 100, 1920), 
 ('Fish fingers, box of 30', 37, 0, 25, 38, 1530), 
 ('Cream of mushroom soup', 31, 0, 8, 61, 200), 
-('Granola cereal', 60, 0, 19, 21, 1260), */
-('Black fungus, 200 g', 0, 77, 23, 0, 564); 
+('Granola cereal', 60, 0, 19, 21, 1260), 
+('Black fungus, 200 g', 0, 77, 23, 0, 564);
 
 
 USE FOOD_INVENTORY;
 SHOW TABLES;
 SELECT * FROM AVAILABLE_FOOD;
 SELECT * FROM DAILY_CLIENT_NEEDS;
+DESCRIBE AVAILABLE_FOOD;
+SELECT Client FROM DAILY_CLIENT_NEEDS WHERE WholeGrains = 16
 

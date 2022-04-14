@@ -1,12 +1,15 @@
 /**
- * @version 1.1
+ * Test file for methods in the Order class.
+ * <p>
+ * @version 1.2
  * @Since 1.0
  */
 
-package UnitTests;
+// package UnitTests;
+package edu.ucalgary.ensf409;
 import org.junit.*;
 
-import edu.ucalgary.ensf409.*;
+// import edu.ucalgary.ensf409.*;
 
 
 import static org.junit.Assert.*;
@@ -16,30 +19,27 @@ import java.util.*;
 /* *********** Tests for the Order class  *********** */
 public class OrderTest {
     // Test data 
-    private final Nutrition ADULT_MALE_NEEDS = new Nutrition(16, 28, 26, 30, 2500);
-    private final Nutrition ADULT_FEMALE_NEEDS = new Nutrition(16, 28, 26, 30, 2500);
-    private final Nutrition CHILDEN_UNDER_NEEDS = new Nutrition(21, 33, 31, 15, 2200);
-    private final Nutrition CHILDEN_OVER_NEEDS = new Nutrition(21, 33, 31, 15, 1400);
-    private final Person ADULT_MALE = new Person(ADULT_MALE_NEEDS, 1);
-    private final Person ADULT_FEMALE = new Person(ADULT_FEMALE_NEEDS, 2);
-    private final Person CHILD_UNDER = new Person(CHILDEN_UNDER_NEEDS, 3);
-    private final Person CHILD_OVER = new Person(CHILDEN_OVER_NEEDS, 3);
+
+    private final Person testPerson1 = createPerson(0);
+    private final Person testPerson2 = createPerson(1);
+    private Family family = createFamily(1,1);
     private Inventory inv = new Inventory();
-    private  Family family= new Family();
+
      
     /*
-     * Using Order constructor whose argument is a Family object and use the getter 
+     * Using Order constructors and use the getter 
      * to retrieve an arraylist containing the same family object.
     */
     @Test
     public void testOrderConstructorAndFamilyGetter() {
-        family.addFamilyMember(ADULT_FEMALE);
+        // generating expected array list
         ArrayList<Family> expectedFamilyAL = new ArrayList<>();
         expectedFamilyAL.add(family);
-
-        Order testOrder = new Order(family,inv);
         
-        assertEquals("Incorrect arraylist was return using getFamilies()", expectedFamilyAL, testOrder.getFamiles());
+        // Using Order constructors
+        Order testOrder = new Order(family, inv);
+        
+        assertEquals("Incorrect array list was return using getFamilies()", expectedFamilyAL, testOrder.getFamilies());
     }
 
     
@@ -50,19 +50,20 @@ public class OrderTest {
     @Test
     public void testOrderConstructorAndAddFamily() {
         
-        Family family1 = new Family();
-        family1.addFamilyMember(CHILD_OVER);
+        // generating expected array list;
+        Family familyToBeAdded = createFamily(1, 0);
         ArrayList<Family> expectedFamilyAL = new ArrayList<>();
         expectedFamilyAL.add(family);
-        expectedFamilyAL.add(family1);
+        expectedFamilyAL.add(familyToBeAdded);
 
+        // generaing test Order object
         ArrayList<Family> constructorAL = new ArrayList<>();
         constructorAL.add(family);
         Order testOrder = new Order(constructorAL,inv);
-        testOrder.addFamily(family1);
+        testOrder.addFamily(familyToBeAdded);
 
 
-        assertEquals("Incorrect arraylist was return", expectedFamilyAL, testOrder.getFamiles());
+        assertEquals("Incorrect arraylist was return", expectedFamilyAL, testOrder.getFamilies());
     }
 
 
@@ -74,6 +75,8 @@ public class OrderTest {
     @Test
     public void testRemoveFromInventory() {
         
+        Inventory testInv = new Inventory();
+        Family testFamily = new Family();
         inv.addToInventory( 0, 80, 10, 10, 120, "Tomato Sauce", 1);
         Order testOrder = new Order(family, inv);
         FoodItem itemInInventory = new FoodItem(0, 80, 10, 10, 120, "Tomato Sauce", 1);
@@ -108,5 +111,40 @@ public class OrderTest {
 
         assertNotEquals("Displayed String for a successful order is incorrect", 
             expectedSuccessfulString, testOrderSuccessful.displayOrder());
+    }
+
+    // private method that creates simple Person objects for testing purposes only
+    // index can only be 0 or 1
+    private Person createPerson(int index) {
+        int i = 1;
+        Nutrition[] nutritions = new Nutrition[2];
+        while (i < 2) {
+            nutritions[i-1] = new Nutrition(i, i, i, i, i*100);
+            i++;
+        }
+        Person pers = new Person(nutritions[index], index);
+        return pers;
+    }
+
+    // private method that creates family objects
+    private Family createFamily(int numOfPerson1, int numOfPerson2) {
+        Family family = new Family();
+        while (numOfPerson1 > 0) {
+            family.addMember(testPerson1);
+            numOfPerson1--;
+        }
+        while (numOfPerson2 > 0) {
+            family.addMember(testPerson2);
+            numOfPerson2--;
+        }
+
+        return family;
+    }
+
+    // adds a small selection of FoodItem into Inventory as a way to bypass using database
+    private Inventory createInventory() {
+        Inventory inv = new Inventory();
+        FoodItem food1 = new FoodItem(wholeGrain, fruitsVeggies, protein, other, calories, name, itemID)
+        return inv;
     }
 }
