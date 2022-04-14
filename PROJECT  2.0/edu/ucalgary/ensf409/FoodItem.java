@@ -1,10 +1,12 @@
 /** 
 * FoodItem.java
+* @author Jan Petallo <ahref="mailto:jan.petallo@ucalgary.ca">jan.petallo@ucalgary.ca</a>
 * @version 1.2
 * @since 1.0	
 **/  
 
 package edu.ucalgary.ensf409;
+
 
 public class FoodItem {
     private String name; // name of the food item
