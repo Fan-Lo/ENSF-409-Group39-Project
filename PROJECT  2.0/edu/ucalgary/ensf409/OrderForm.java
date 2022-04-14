@@ -26,4 +26,15 @@ public class OrderForm {
             e.printStackTrace();;
         }
     }
+ 
+      public void formToText(String output){
+        String shortage = "Hamper Order Form: \n\nThere is currently not enough food items to fulifill you request.\nThank you!";
+        try {
+            FileWriter writer = new FileWriter(output);
+            writer.write(shortage);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();;
+        }
+    }
 }
