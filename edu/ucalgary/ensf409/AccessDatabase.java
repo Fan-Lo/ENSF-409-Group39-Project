@@ -160,12 +160,13 @@ public class AccessDatabase{
         }
     }
 
-    // public static void main(String[] args) {
-    //     AccessDatabase db = new AccessDatabase("jdbc:mysql://localhost/FOOD_INVENTORY", "student", "ensf");
-    //     int[] test = db.getClientNeeds(1);
-    //     for (int i = 0; i < 4; i++) {
-    //         System.out.println(test[i]);
-    //     }
-    //     db.close();
-    // }
+     /*public static void main(String[] args) {
+         AccessDatabase db = new AccessDatabase("jdbc:mysql://localhost/FOOD_INVENTORY", "student", "ensf");
+		 db.initializeConnection();
+         int[] test = db.getClientNeeds(1);
+         for (int i = 0; i < 5; i++) {
+             System.out.println(test[i]);
+         }
+         db.close();
+     }*/
 }

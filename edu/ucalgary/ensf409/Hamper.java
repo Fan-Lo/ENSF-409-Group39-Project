@@ -1,3 +1,11 @@
+/** 
+* Hamper.java
+* @version 1.5
+* @since 1.4	
+* Updated to accomodate the changes to FoodItem
+*
+**/  
+
 package edu.ucalgary.ensf409;
 
 import java.util.*;
@@ -29,13 +37,13 @@ public class Hamper{
 	}
 	public void addFood(FoodItem item){
 		this.items.add(item);
-		this.grain += item.getNutrition().getWholeGrain();
-		this.fruit += item.getNutrition().getFruitsVeggies();
-		this.protein += item.getNutrition().getProtein();
-		this.other += item.getNutrition().getOther();
+		this.grain += item.getWholeGrain();
+		this.fruit += item.getFruitsVeggies();
+		this.protein += item.getProtein();
+		this.other += item.getOther();
 		if(this.totalCals == Integer.MAX_VALUE)
 			this.totalCals = 0;
-		this.totalCals += item.getNutrition().getCalories();
+		this.totalCals += item.getCalories();
 	}
 	public ArrayList<FoodItem> getFood(){
 		return this.items;
@@ -59,17 +67,16 @@ public class Hamper{
 	public int getOther(){
 		return this.other;
 	}
-	//Similar to display function, which I used for testing purposes
+	
 	public String displayHamper(){
 		String result = "";
 		Iterator<FoodItem> myIterator = this.items.iterator();
 		while(myIterator.hasNext()){
 			result += myIterator.next().getName() + "\n";
 		}
-		//result += "\tGrain: " + grain + ", Fruit: " + fruit + ", Protein: " + protein + ", Other: " + other + ", Total: " + totalCals;
 		return result;
 	}
-	//Used for determining the most efficient hamper, by passing in the total calories required and taking the difference.
+	
 	public int calculateWaste(int calories){
 		return this.totalCals - calories;
 	}

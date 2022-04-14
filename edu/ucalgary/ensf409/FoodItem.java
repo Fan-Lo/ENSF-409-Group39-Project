@@ -1,31 +1,32 @@
 /** 
 * FoodItem.java
-* @version 1.2
-* @since 1.0	
+* @version 1.3
+* @since 1.2	
+* Updated to implement inheritance
+*
 **/  
 
 package edu.ucalgary.ensf409;
 
-public class FoodItem {
+public class FoodItem extends Nutrition{
     private String name; // name of the food item
     private final int ITEM_ID; // ID of the food item
-    private final Nutrition NUTRITION; //Nutrition content of the food item
 
     /**
      * Constructs a FoodItem object
      */
-    public FoodItem(int wholeGrain, int fruitsVeggies, int protein, int other, int calories, String name, int itemID){
-        this.name = name;
+    public FoodItem(int grain, int fruitVeg, int protein, int other, int calories, String name, int itemID){
+        super(grain, fruitVeg, protein, other, calories);
+		this.name = name;
         this.ITEM_ID = itemID;
-        this.NUTRITION = new Nutrition(wholeGrain, fruitsVeggies, protein, other, calories);
     }
 	/**
      * Copy Constructor of a FoodItem object
      */
 	public FoodItem(FoodItem item){
+		super(item);
 		this.name = item.getName();
 		this.ITEM_ID = item.getItemID();
-		this.NUTRITION = new Nutrition(item.getNutrition().getWholeGrain(), item.getNutrition().getFruitsVeggies(), item.getNutrition().getProtein(), item.getNutrition().getOther(), item.getNutrition().getCalories());
 	}
 
     /**
@@ -33,13 +34,6 @@ public class FoodItem {
      */
     public int getItemID() {
         return this.ITEM_ID;
-    }
-
-    /**
-     * Getter of Nutrition object
-     */
-    public Nutrition getNutrition() {
-        return this.NUTRITION;
     }
 
     /**
