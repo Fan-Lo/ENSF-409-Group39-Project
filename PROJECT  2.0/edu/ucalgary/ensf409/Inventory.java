@@ -1,12 +1,19 @@
 /** 
-* Inventory.java
-* @version 1.3
+* @author Jan Petallo <ahref="mailto:jan.petallo@ucalgary.ca">jan.petallo@ucalgary.ca</a>
+* @version 1.4
 * @since 1.0	
-**/   
+*
+*/   
 package edu.ucalgary.ensf409;
 
 import java.util.*;
 
+/**
+ * Inventory class is the gateway to the database. The no-argument constructor
+ * initializes a connection to the database food_inventory that contains the food_items
+ * available. These items are fetched and assigned into the ArrayList inventory through
+ * the method populate(). 
+ */
 public class Inventory {
     private static ArrayList<FoodItem> inventory = new ArrayList<FoodItem>(); // meant to reflect the the available items in the inventory (database)
     private AccessDatabase database;
