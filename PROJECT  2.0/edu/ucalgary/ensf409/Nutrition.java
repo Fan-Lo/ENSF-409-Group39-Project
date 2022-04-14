@@ -10,20 +10,20 @@ public class Nutrition{
 	
 	// constructor used to store Nutritional content of Food items
 	public Nutrition(int grain, int fruit, int protein, int other, int total){
-		this.grainCals = grain;
-		this.fruitCals = fruit;
-		this.proteinCals = protein;
-		this.otherCals = other;
+		this.grainCals = (int)Math.ceil((grain/(double)100) * total);
+		this.fruitCals = (int)Math.ceil((fruit/(double)100) * total);
+		this.proteinCals = (int)Math.ceil((protein/(double)100) * total);
+		this.otherCals = (int)Math.ceil((other/(double)100) * total);
 		this.totalCals = total;
 	}
 	
 	//constructor used to store Nutritional needs of clients
 	public Nutrition(int grain, int fruit, int protein, int other, int cals, String name) {
-		this.grainCals = grain;  
-		this.fruitCals = fruit;
-		this.proteinCals = protein;
-		this.otherCals = other;
-		this.totalCals = cals;
+		this.grainCals = (int)Math.ceil((grain/(double)100) * total);
+		this.fruitCals = (int)Math.ceil((fruit/(double)100) * total);
+		this.proteinCals = (int)Math.ceil((protein/(double)100) * total);
+		this.otherCals = (int)Math.ceil((other/(double)100) * total);
+		this.totalCals = total;
 	}
 
 	public int getWholeGrain(){
