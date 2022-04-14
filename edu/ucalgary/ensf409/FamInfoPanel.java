@@ -1,8 +1,8 @@
 /**
 @author     Nooreldeen Abdallah
 href= "mailto:nooreldeen.abdallah@ucalgary.ca">nooreldeen.abdallah@ucalgary.ca</a>
-@version    1.13
-@since      1.12
+@version    1.14
+@since      1.13
  */
 
 package edu.ucalgary.ensf409;
@@ -18,28 +18,26 @@ import java.awt.FlowLayout;
 
 public class FamInfoPanel extends JFrame implements ActionListener, MouseListener{
 
-    private int numHampers;
     private int numAMale;
     private int numAFemale;
     private int numChildA8;
     private int numChildU8;
-	//private Inventory theInventory;
+	private Inventory theInventory;
+    private Family family;
+    private int famNumber;
     
     private JLabel instructions;
-    private JLabel numHampersLabel;
     private JLabel numAMaleLabel;
     private JLabel numAFemaleLabel;
     private JLabel numChildA8Label;
     private JLabel numChildU8Label;
     
     private JTextField numAMaleInput;
-    private JTextField numHampersInput;
     private JTextField numAFemaleInput;
     private JTextField numChildA8Input;
     private JTextField numChildU8Input;
 
-    //private Family family;
-    private int famNumber;
+
     
     // constructor
     public FamInfoPanel(int famNumber){
@@ -60,13 +58,11 @@ public class FamInfoPanel extends JFrame implements ActionListener, MouseListene
     public void setupGUI(){
         
         instructions = new JLabel("Enter Hamper Info for Family # " + famNumber);
-        numHampersLabel = new JLabel("# of Hampers to Create:");
         numAMaleLabel = new JLabel("# of Adult Males:");
         numAFemaleLabel = new JLabel("# of Adult Females:");
         numChildA8Label = new JLabel("# Child Above 8:");
         numChildU8Label = new JLabel("# Child Under 8:");
         
-        numHampersInput = new JTextField("e.g. 1", 15);
         numAMaleInput = new JTextField("e.g. 1", 15);
         numAFemaleInput = new JTextField("e.g. 1", 15);
         numChildA8Input = new JTextField("e.g. 1", 15);
@@ -76,7 +72,6 @@ public class FamInfoPanel extends JFrame implements ActionListener, MouseListene
         numAFemaleInput.addMouseListener(this);
         numChildA8Input.addMouseListener(this);
         numChildU8Input.addMouseListener(this);
-        numHampersInput.addMouseListener(this);
         
         JButton submitInfo = new JButton("Generate Hamper and Print Form");
         submitInfo.addActionListener(this);
@@ -99,8 +94,6 @@ public class FamInfoPanel extends JFrame implements ActionListener, MouseListene
         clientPanel.add(numChildA8Input);
         clientPanel.add(numChildU8Label);
         clientPanel.add(numChildU8Input);
-        clientPanel.add(numHampersLabel);
-        clientPanel.add(numHampersInput);
         submitPanel.add(submitInfo);
         
         this.add(headerPanel, BorderLayout.NORTH);
@@ -115,7 +108,6 @@ public class FamInfoPanel extends JFrame implements ActionListener, MouseListene
             numAMale = Integer.parseInt(numAMaleInput.getText());
             numChildA8 = Integer.parseInt(numChildA8Input.getText());
             numChildU8 = Integer.parseInt(numChildU8Input.getText());
-            numHampers = Integer.parseInt(numHampersInput.getText());
         }catch(Exception e){
             JOptionPane.showMessageDialog(this, "All values must be Integers");
         }
@@ -147,9 +139,6 @@ public class FamInfoPanel extends JFrame implements ActionListener, MouseListene
 
         if(event.getSource().equals(numChildU8Input))
             numChildU8Input.setText("");
-
-        if(event.getSource().equals(numHampersInput))
-            numHampersInput.setText("");
                 
     }
     
@@ -167,8 +156,7 @@ public class FamInfoPanel extends JFrame implements ActionListener, MouseListene
             "Adult Males: "+ String.valueOf(numAMale) + "\n"+
             "Adult Females: "+String.valueOf(numAFemale) + "\n"+
             "Child Above 8: " + String.valueOf(numChildA8) + "\n"+
-            "Child Under 8: " + String.valueOf(numChildU8) + "\n"+
-            String.valueOf(numHampers) + " time(s)"
+            "Child Under 8: " + String.valueOf(numChildU8) + "\n"
         );
         
         return message;
@@ -200,11 +188,6 @@ public class FamInfoPanel extends JFrame implements ActionListener, MouseListene
             JOptionPane.showMessageDialog(this, numChildU8 + " is an invalid Child Under 8 input.");
         }
 
-        if(numHampers < 1){
-            allInputValid = false;
-            JOptionPane.showMessageDialog(this, numHampers + " is an invalid Number of Hampers input.");
-        }
-
         if(numAMale == 0 && numAFemale == 0 && numChildA8 == 0 && numChildU8 == 0){
             allInputValid = false;
             JOptionPane.showMessageDialog(this, "Family should have at least one person");
@@ -216,27 +199,19 @@ public class FamInfoPanel extends JFrame implements ActionListener, MouseListene
 
     //Creates a new family
     private void generatFamily(){
-		//Nutrition maleNutrition = new Nutrition(16, 28, 26, 30, 500);
-		//Nutrition femaleNutrition = new Nutrition(16, 28, 26, 30, 200);
-		//Nutrition childOver8Nutrition = new Nutrition(21, 33, 31, 15, 2200);
-		//Nutrition childUnder8Nutrition = new Nutrition(21, 33, 31, 15, 100);
-		
-        //family = new Family(numAMale, numAFemale, numChildA8, numChildU8);
-		//family = new Family();
-		//Person person = new Person(maleNutrition, 1);
-		//family.addMember(person);
+        family = new Family(numAMale, numAFemale, numChildA8, numChildU8);
     }
 
     //Creates the least wasteful hamper
     private void generatHamper(){
-        //family.createHamper(theInventory);
+        family.createHamper(theInventory);
     }
 
-    //TODO: FORM NAME
+    //Prints an order form
     private void printOrderForm(){
-        //Order theOrder = new Order(family, theInventory);
+        Order theOrder = new Order(family, theInventory);
         String fileName = "Order for Family #" + famNumber + ".txt";
-		//OrderForm.formToTxtFile(theOrder, fileName);
+		OrderForm.formToTxtFile(theOrder, fileName);
     }
 
     
