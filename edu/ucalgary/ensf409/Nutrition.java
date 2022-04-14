@@ -1,7 +1,7 @@
 /** 
 * Nutrition.java
-* @version 1.4
-* @since 1.3	
+* @version 1.5
+* @since 1.4	
 * Updated to be a superclass
 * 
 **/  
