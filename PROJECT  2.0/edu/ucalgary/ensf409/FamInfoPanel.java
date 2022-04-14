@@ -130,7 +130,7 @@ public class FamInfoPanel extends JFrame implements ActionListener, MouseListene
 					e.printStackTrace(); // there might be a better way to handle this
 				}
                 OrderForm orderForm = new OrderForm();
-                orderForm.formToTxtFile(request, "output.txt");
+                orderForm.formToTxtFile(request, "orderform.txt");
             }
 
             String msg = dispMsg();
