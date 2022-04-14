@@ -18,27 +18,22 @@ import java.awt.FlowLayout;
 
 public class FamInfoPanel extends JFrame implements ActionListener, MouseListener{
 
-    private int numHampers;
     private int numAMale;
     private int numAFemale;
     private int numChildA8;
     private int numChildU8;
-	//private Inventory theInventory;
     
     private JLabel instructions;
-    private JLabel numHampersLabel;
     private JLabel numAMaleLabel;
     private JLabel numAFemaleLabel;
     private JLabel numChildA8Label;
     private JLabel numChildU8Label;
     
     private JTextField numAMaleInput;
-    private JTextField numHampersInput;
     private JTextField numAFemaleInput;
     private JTextField numChildA8Input;
     private JTextField numChildU8Input;
 
-    //private Family family;
     private int famNumber;
     private int numOfFamilies;
     private static Order request;
@@ -51,8 +46,6 @@ public class FamInfoPanel extends JFrame implements ActionListener, MouseListene
         this.numOfFamilies = numFams;
         setupGUI();
 
-		//theInventory = new Inventory();
-		//theInventory.populate();
 
         setSize(250,400);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);        
@@ -123,14 +116,16 @@ public class FamInfoPanel extends JFrame implements ActionListener, MouseListene
             generateOrder();
 
             if (famNumber == numOfFamilies){ // this means we need to start creating hampers now 
+                OrderForm orderForm = new OrderForm();
                 try {
 					request.generateHampers();
+                    orderForm.formToTxtFile(request, "orderform.txt");
 				} catch (ItemNotFoundException e) {
                     System.out.println("There is currently not enough food items in the inventory to fulfill your request!");
-					e.printStackTrace(); // there might be a better way to handle this
+					//e.printStackTrace(); // there might be a better way to handle this
+                    orderForm.formToText("orderform.txt");
 				}
-                OrderForm orderForm = new OrderForm();
-                orderForm.formToTxtFile(request, "orderform.txt");
+                
             }
 
             String msg = dispMsg();
