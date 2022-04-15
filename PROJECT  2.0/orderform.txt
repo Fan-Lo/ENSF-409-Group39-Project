@@ -1,0 +1,38 @@
+Hamper Order Form
+
+Name:
+Date:
+
+Original Request
+Hamper 1: 1 Adult Male, 0 Adult Female, 0 Child Over 8, 0 Child Under 8 
+
+Hamper 1 Items: 
+65	Boba green tea, 4 cans
+78	Kidney beans, 1 pound
+94	Canned corn, 1 tin
+111	Brown rice, small bag
+113	Butter, 4 sticks
+115	Raisin bran, 1 box
+116	Oatmeal, 10 packets
+117	Frozen waffles, pack of 10
+118	Frozen blueberries, 2100 g
+119	Cocktail fruits, tin
+120	Olive oil, 1 kg
+122	Dried figs, 500 g
+123	Dried figs, 500 g
+124	Tinned sardines, pack of 5
+125	Tinned sardines, pack of 5
+126	Egg salad, 57 g
+127	Grape jelly
+128	Onions, net of 10
+131	Roasted seaweed, 250 g
+132	Honey, 300 g
+133	Escargot, 500 g
+134	Salmon, 5 filets
+137	Roasted mixed nuts, 56 oz
+138	Farro, medium bag
+139	Pearl barley, 1 pound
+142	Whey powder, large jar
+143	Oranges, bag
+
+

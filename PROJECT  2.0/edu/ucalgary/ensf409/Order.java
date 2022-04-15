@@ -105,10 +105,10 @@ public class Order {
      * @return String
      */
     public String displayOrder() {
-        String str = "Hamper Order Form\n";
+        String str = "Hamper Order Form\n\n";
         String hamperContent = "";
         str += "Name:\n";
-        str += "Date:\n";
+        str += "Date:\n\n";
         str += "Original Request\n";
         for (int i = 0; i < families.size(); i++){
             str += String.format("Hamper %d: ", i + 1);

@@ -64,7 +64,8 @@ public class Hamper{
 		String result = "";
 		Iterator<FoodItem> myIterator = this.items.iterator();
 		while(myIterator.hasNext()){
-			result += myIterator.next().getName() + "\n";
+			FoodItem iterItem = myIterator.next();
+			result += iterItem.getItemID() + "\t" + iterItem.getName() + "\n";
 		}
 		//result += "\tGrain: " + grain + ", Fruit: " + fruit + ", Protein: " + protein + ", Other: " + other + ", Total: " + totalCals;
 		return result;
