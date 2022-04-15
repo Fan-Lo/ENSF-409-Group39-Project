@@ -97,7 +97,7 @@ public class AccessDatabase{
 	}
 
     // delete the first occurence of the item
-    public void deleteFoodItem(int itemID) {
+    public boolean deleteFoodItem(int itemID) {
         try{
             String query = "DELETE FROM AVAILABLE_FOOD WHERE ItemID = ?";
             PreparedStatement myStmt = dbConnect.prepareStatement(query);
@@ -109,7 +109,9 @@ public class AccessDatabase{
             myStmt.clearParameters();
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
+        return true; // return true if it is deleted successfully
 
     }
 
