@@ -6,7 +6,6 @@ public class Nutrition{
 	private int proteinCals;
 	private int otherCals;
 	private int totalCals;
-	private AccessDatabase database;
 	
 	// constructor used to store Nutritional content of Food items
 	public Nutrition(int grain, int fruit, int protein, int other, int total){
@@ -18,7 +17,7 @@ public class Nutrition{
 	}
 	
 	//constructor used to store Nutritional needs of clients
-	public Nutrition(int grain, int fruit, int protein, int other, int cals, String name) {
+	public Nutrition(int grain, int fruit, int protein, int other, int total, String name) {
 		this.grainCals = (int)Math.ceil((grain/(double)100) * total);
 		this.fruitCals = (int)Math.ceil((fruit/(double)100) * total);
 		this.proteinCals = (int)Math.ceil((protein/(double)100) * total);
