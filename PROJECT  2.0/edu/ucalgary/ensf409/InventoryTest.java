@@ -1,7 +1,7 @@
 /** 
 * InventoryTest.java
 * @author Jan Petallo <ahref="mailto:jan.petallo@ucalgary.ca">jan.petallo@ucalgary.ca</a>
-* @version 1.3
+* @version 1.4
 * @since 1.0	
 **/  
 
@@ -11,6 +11,8 @@ import org.junit.Test;
 import org.junit.Assert;
 import static org.junit.Assert.*;
 import java.util.*;
+
+import com.mysql.cj.xdevapi.RemoveStatement;
 
 public class InventoryTest {
 
@@ -60,6 +62,26 @@ public class InventoryTest {
         boolean allAdded = inventory.restoreRemovedItems(items);
 
         assertTrue("Items were not successfully added to the inventory", allAdded);
+
+    }
+
+    // Tests if removeFromDatabase() removes all the items specified in the ArrayList passed as arguments
+    // allRemoved should be true to confirm this. Otherwise, it is false.
+    @Test
+    public void testRemoveFromDatabase(){
+        Inventory inventory = new Inventory();
+        FoodItem itemToRemove1 = inventory.getFood().get(0);
+        FoodItem itemToRemove2 = inventory.getFood().get(1);
+        ArrayList<FoodItem> itemsToRemove = new ArrayList<>();
+
+        itemsToRemove.add(itemToRemove1);
+        itemsToRemove.add(itemToRemove2);
+
+        int item1ID = itemToRemove1.getItemID();
+        int item2ID = itemToRemove2.getItemID();
+
+        boolean allRemoved = inventory.removeFromDatabase(itemsToRemove);
+        assertTrue("Not all items were removed from the database", allRemoved);
 
     }
 
