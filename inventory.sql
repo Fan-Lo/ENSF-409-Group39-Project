@@ -77,7 +77,7 @@ VALUES
 ('Ground beef, pound', 0, 0, 26, 74, 1179), 
 ('Ground beef, pound', 0, 0, 26, 74, 1179), 
 ('Avocado, dozen', 0, 100, 0, 0, 2880), 
-/*('Avocado, dozen', 0, 100, 0, 0, 2880), 
+('Avocado, dozen', 0, 100, 0, 0, 2880), 
 ('Corn tortillas, pound', 94, 0, 6, 0, 989), 
 ('Pasta, dry, two pounds', 75, 0, 13, 12, 3366), 
 ('Pasta, dry, two pounds', 75, 0, 13, 12, 3366), 
@@ -210,7 +210,7 @@ VALUES
 ('Flax oil, bottle', 0, 0, 0, 100, 1920), 
 ('Fish fingers, box of 30', 37, 0, 25, 38, 1530), 
 ('Cream of mushroom soup', 31, 0, 8, 61, 200), 
-('Granola cereal', 60, 0, 19, 21, 1260), */
+('Granola cereal', 60, 0, 19, 21, 1260), 
 ('Black fungus, 200 g', 0, 77, 23, 0, 564);
 
 
