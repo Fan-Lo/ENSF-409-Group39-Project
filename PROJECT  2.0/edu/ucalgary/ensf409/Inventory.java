@@ -1,6 +1,6 @@
 /** 
 * @author Jan Petallo <ahref="mailto:jan.petallo@ucalgary.ca">jan.petallo@ucalgary.ca</a>
-* @version 1.4
+* @version 1.5
 * @since 1.0	
 *
 */   
@@ -28,6 +28,11 @@ public class Inventory {
         database = new AccessDatabase("jdbc:mysql://localhost/food_inventory","student","ensf");
         database.initializeConnection();
         populate();;
+        int totalCals = 0;
+        for(FoodItem item: inventory){
+            totalCals += item.getNutrition().getCalories();
+        }
+        System.out.println("Total Calories of all items in inventory = " + totalCals);
     }
     
     /** 
@@ -49,19 +54,24 @@ public class Inventory {
      * Called when an attempt to remove an item from the inventory fails (item is not in the inventory anymore)
      * It adds back all the items already removed before the failure
      */
-    public void restoreRemovedItems(List<FoodItem> items){
+    public boolean restoreRemovedItems(List<FoodItem> items){
+        boolean added = false;
         for(FoodItem item: items){
-            inventory.add(item); // adds the item back into the ArrayList inventory
+            added = inventory.add(item); // adds the item back into the ArrayList inventory
         }
+        return added;
     }
 
     /**
      * Removes all items (that were actually available to fulfill the order) from the database
      */
-    public void removeFromDatabase(ArrayList<FoodItem> itemToRemove) {
+    public boolean removeFromDatabase(ArrayList<FoodItem> itemToRemove) {
+        boolean allRemovved = false; 
         for(FoodItem item: itemToRemove){
-            database.deleteFoodItem(item.getItemID());
+            allRemovved = database.deleteFoodItem(item.getItemID());
         }
+        return allRemovved; // true if all items were removed. Otherwise, false!
+
     }
 	
 	 /**
