@@ -1,8 +1,8 @@
 /**
 @author     Nooreldeen Abdallah
 href= "mailto:nooreldeen.abdallah@ucalgary.ca">nooreldeen.abdallah@ucalgary.ca</a>
-@version    1.13
-@since      1.12
+@version    1.14
+@since      1.13
  */
 
 package edu.ucalgary.ensf409;
@@ -121,18 +121,17 @@ public class FamInfoPanel extends JFrame implements ActionListener, MouseListene
 					request.generateHampers();
                     orderForm.formToTxtFile(request, "orderform.txt");
 				} catch (ItemNotFoundException e) {
-                    System.out.println("There is currently not enough food items in the inventory to fulfill your request!");
-					//e.printStackTrace(); // there might be a better way to handle this
-                    orderForm.formToText("orderform.txt");
+                    JOptionPane.showMessageDialog(this,"Hamper Can't be Created due to a shortage in the Inventory!\n" );
+                    setVisible(false);
+                    dispose();
 				}
                 
             }
 
             String msg = dispMsg();
             JOptionPane.showMessageDialog(this, "Created Hamper Info: \n" + msg);
-
-            setVisible(false); //you can't see me!
-            dispose(); //Destroy the JFrame object
+            setVisible(false);
+            dispose();
         }
     }
     
