@@ -122,6 +122,7 @@ public class FamInfoPanel extends JFrame implements ActionListener, MouseListene
                     orderForm.formToTxtFile(request, "orderform.txt");
 				} catch (ItemNotFoundException e) {
                     JOptionPane.showMessageDialog(this,"Hamper Can't be Created due to a shortage in the Inventory!\n" );
+                    orderForm.formToText("orderform.txt");
                     setVisible(false);
                     dispose();
 				}
