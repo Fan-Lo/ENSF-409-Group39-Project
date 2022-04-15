@@ -12,8 +12,6 @@ import org.junit.Assert;
 import static org.junit.Assert.*;
 import java.util.*;
 
-import com.mysql.cj.xdevapi.RemoveStatement;
-
 public class InventoryTest {
 
     //Test the constructor for Inventory
