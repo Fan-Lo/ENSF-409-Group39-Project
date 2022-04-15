@@ -7,7 +7,6 @@
 
 package edu.ucalgary.ensf409;
 
-
 public class FoodItem {
     private String name; // name of the food item
     private final int ITEM_ID; // ID of the food item
@@ -21,7 +20,7 @@ public class FoodItem {
         this.ITEM_ID = itemID;
         this.NUTRITION = new Nutrition(wholeGrain, fruitsVeggies, protein, other, calories);
     }
-
+    
     /**
      *Getter of ITEM_ID
      */
