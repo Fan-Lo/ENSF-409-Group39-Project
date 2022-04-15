@@ -28,11 +28,6 @@ public class Inventory {
         database = new AccessDatabase("jdbc:mysql://localhost/food_inventory","student","ensf");
         database.initializeConnection();
         populate();;
-        int totalCals = 0;
-        for(FoodItem item: inventory){
-            totalCals += item.getNutrition().getCalories();
-        }
-        System.out.println("Total Calories of all items in inventory = " + totalCals);
     }
     
     /** 
