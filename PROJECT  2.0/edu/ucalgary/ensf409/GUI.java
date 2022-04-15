@@ -83,8 +83,8 @@ public class GUI extends JFrame implements ActionListener, MouseListener{
             JOptionPane.showMessageDialog(this, "Num Fams: " + numFams + "\nPlease fill out the Hamper Info in order \n(i.e., Family #1 first)");
             genHampers();
 
-            setVisible(false); //you can't see me!
-            dispose(); //Destroy the JFrame object
+            //setVisible(false); //you can't see me!
+            //dispose(); //Destroy the JFrame object
         }
     }
     
