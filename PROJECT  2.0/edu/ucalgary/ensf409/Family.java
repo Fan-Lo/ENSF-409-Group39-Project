@@ -15,11 +15,6 @@ public class Family{
     private int numAFemale, numAMale, numChildA8, numChildU8;
     private AccessDatabase database = new AccessDatabase("jdbc:mysql://localhost/food_inventory","student","ensf");
     private ArrayList<Nutrition> nutritionalNeeds;
-	 
-	public Family(){
-        database = new AccessDatabase("jdbc:mysql://localhost/food_inventory","student","ensf");
-        database.initializeConnection();
-	}
 
 	public Family(int numAMale, int numAFemale, int numChildA8, int numChildU8){
 		this.numAMale = numAMale;

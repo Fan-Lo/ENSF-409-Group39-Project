@@ -57,7 +57,7 @@ public class AccessDatabase{
 				other = results.getInt("Other");
 				cals = results.getInt("Calories");
 				name = results.getString("Client");
-				nutritions.add(new Nutrition(grain, fruit, protein, other, cals, name));
+				nutritions.add(new Nutrition(grain, fruit, protein, other, cals));
             }
             
             myStmt.close();
