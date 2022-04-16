@@ -144,7 +144,7 @@ public class OrderTest {
     // adds a small selection of FoodItem into Inventory as a way to bypass using database
     private Inventory createInventory() {
         Inventory inv = new Inventory();
-        FoodItem food1 = new FoodItem(wholeGrain, fruitsVeggies, protein, other, calories, name, itemID)
+        FoodItem food1 = new FoodItem(wholeGrain, fruitsVeggies, protein, other, calories, name, itemID);
         return inv;
     }
 }

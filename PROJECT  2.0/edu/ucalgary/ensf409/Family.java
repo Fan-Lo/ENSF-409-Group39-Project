@@ -1,8 +1,9 @@
 /**
 @author     Justin Kuhn
 href= "mailto:justinkuhn@ucalgary.ca">justin.kuhn@ucalgary.ca</a>
-@version    1.3
-@since      1.2
+@version    1.4
+@since      1.3
+Added trim() method
  */
 
 package edu.ucalgary.ensf409;
@@ -83,6 +84,8 @@ public class Family{
 
 	public void createHamper(Inventory inventory) throws ItemNotFoundException{
 		int totalNeeds = this.getWeeklyCalorieNeeds();
+		int minCals = this.getWeeklyCalorieNeeds(), minGrain = this.getWeeklyGrainNeeds(), minFruit = this.getWeeklyVeggieNeeds(),
+		minProtein = this.getWeeklyProteinNeeds(), minOther = this.getWeeklyOtherNeeds(); //del
 		ArrayList<FoodItem> foodAsList = inventory.getFood();
 		ArrayList<Hamper> needsSet = optimizeCals(foodAsList);
 
@@ -99,8 +102,25 @@ public class Family{
 				mostEfficient = needsSet.get(i);
 			}
 		}
-		//System.out.println("\nThe hamper: " + mostEfficient.toString() + " is the most efficient as it has " + mostEfficient.calculateWaste(totalNeeds) + " excess.");
+		
+		trim(mostEfficient); // Gets rid of as much unnecessary food as it can
+		
 		this.hamper = mostEfficient; 
+	}
+	
+	private void trim(Hamper hamper){
+		int minCals = this.getWeeklyCalorieNeeds(), minGrain = this.getWeeklyGrainNeeds(), minFruit = this.getWeeklyVeggieNeeds(),
+		minProtein = this.getWeeklyProteinNeeds(), minOther = this.getWeeklyOtherNeeds(); //Getting the minimum values of each category
+		
+		for(int i = 0; i < hamper.getFood().size(); i++){
+			if(hamper.getGrain() - hamper.getFood().get(i).getNutrition().getWholeGrain() >= minGrain
+			&& hamper.getFruit() - hamper.getFood().get(i).getNutrition().getFruitsVeggies() >= minFruit
+			&& hamper.getProtein() - hamper.getFood().get(i).getNutrition().getProtein() >= minProtein
+			&& hamper.getOther() - hamper.getFood().get(i).getNutrition().getOther() >= minOther
+			&& hamper.getCalories() - hamper.getFood().get(i).getNutrition().getCalories() >= minCals){ 
+				hamper.removeFood(i); //Remove item if it can be removed safely
+			}
+		}
 	}
 	
 	private ArrayList<Hamper> optimizeCals(ArrayList<FoodItem> foods) {

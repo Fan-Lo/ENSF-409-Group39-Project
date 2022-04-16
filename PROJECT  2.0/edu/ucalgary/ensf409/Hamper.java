@@ -37,6 +37,14 @@ public class Hamper{
 			this.totalCals = 0;
 		this.totalCals += item.getNutrition().getCalories();
 	}
+	public void removeFood(int index){
+		this.grain -= items.get(index).getNutrition().getWholeGrain();
+		this.fruit -= items.get(index).getNutrition().getFruitsVeggies();
+		this.protein -= items.get(index).getNutrition().getProtein();
+		this.other -= items.get(index).getNutrition().getOther();
+		this.totalCals -= items.get(index).getNutrition().getCalories();
+		this.items.remove(index);
+	}
 	public ArrayList<FoodItem> getFood(){
 		return this.items;
 	}
@@ -67,7 +75,6 @@ public class Hamper{
 			FoodItem iterItem = myIterator.next();
 			result += iterItem.getItemID() + "\t" + iterItem.getName() + "\n";
 		}
-		//result += "\tGrain: " + grain + ", Fruit: " + fruit + ", Protein: " + protein + ", Other: " + other + ", Total: " + totalCals;
 		return result;
 	}
 	//Used for determining the most efficient hamper, by passing in the total calories required and taking the difference.
