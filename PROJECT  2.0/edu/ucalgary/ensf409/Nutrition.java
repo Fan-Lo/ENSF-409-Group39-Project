@@ -1,3 +1,12 @@
+/** 
+* Nutrition.java
+* 
+* @version 1.6
+* @since 1.5
+* Now a superclass to FoodItem
+*	
+**/  
+
 package edu.ucalgary.ensf409;
 
 public class Nutrition{

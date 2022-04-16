@@ -113,11 +113,11 @@ public class Family{
 		minProtein = this.getWeeklyProteinNeeds(), minOther = this.getWeeklyOtherNeeds(); //Getting the minimum values of each category
 		
 		for(int i = 0; i < hamper.getFood().size(); i++){
-			if(hamper.getGrain() - hamper.getFood().get(i).getNutrition().getWholeGrain() >= minGrain
-			&& hamper.getFruit() - hamper.getFood().get(i).getNutrition().getFruitsVeggies() >= minFruit
-			&& hamper.getProtein() - hamper.getFood().get(i).getNutrition().getProtein() >= minProtein
-			&& hamper.getOther() - hamper.getFood().get(i).getNutrition().getOther() >= minOther
-			&& hamper.getCalories() - hamper.getFood().get(i).getNutrition().getCalories() >= minCals){ 
+			if(hamper.getGrain() - hamper.getFood().get(i).getWholeGrain() >= minGrain
+			&& hamper.getFruit() - hamper.getFood().get(i).getFruitsVeggies() >= minFruit
+			&& hamper.getProtein() - hamper.getFood().get(i).getProtein() >= minProtein
+			&& hamper.getOther() - hamper.getFood().get(i).getOther() >= minOther
+			&& hamper.getCalories() - hamper.getFood().get(i).getCalories() >= minCals){ 
 				hamper.removeFood(i); //Remove item if it can be removed safely
 			}
 		}
@@ -128,7 +128,7 @@ public class Family{
 		protein = this.getWeeklyProteinNeeds(), other = this.getWeeklyOtherNeeds();
 		
 		for(int i = 0; i < foods.size(); i++){
-            maxCals += foods.get(i).getNutrition().getCalories();
+            maxCals += foods.get(i).getCalories();
         }
         ArrayList<Hamper> hamperCombinations = new ArrayList<Hamper>(maxCals + 1);
 		
@@ -138,9 +138,9 @@ public class Family{
 		hamperCombinations.get(0).setCalories(0);
 		
         for(int i = 0; i < foods.size(); i++){
-            for(int j = maxCals; j >= foods.get(i).getNutrition().getCalories(); j--){
-                if(hamperCombinations.get(j - foods.get(i).getNutrition().getCalories()).getCalories() != Integer.MAX_VALUE){
-					Hamper testHamper = new Hamper(hamperCombinations.get(j - foods.get(i).getNutrition().getCalories()));
+            for(int j = maxCals; j >= foods.get(i).getCalories(); j--){
+                if(hamperCombinations.get(j - foods.get(i).getCalories()).getCalories() != Integer.MAX_VALUE){
+					Hamper testHamper = new Hamper(hamperCombinations.get(j - foods.get(i).getCalories()));
 					testHamper.addFood(foods.get(i));
 					if(testHamper.getCalories() < hamperCombinations.get(j).getCalories()){
 						hamperCombinations.set(j, testHamper);

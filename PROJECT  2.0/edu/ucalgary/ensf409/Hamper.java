@@ -29,20 +29,20 @@ public class Hamper{
 	}
 	public void addFood(FoodItem item){
 		this.items.add(item);
-		this.grain += item.getNutrition().getWholeGrain();
-		this.fruit += item.getNutrition().getFruitsVeggies();
-		this.protein += item.getNutrition().getProtein();
-		this.other += item.getNutrition().getOther();
+		this.grain += item.getWholeGrain();
+		this.fruit += item.getFruitsVeggies();
+		this.protein += item.getProtein();
+		this.other += item.getOther();
 		if(this.totalCals == Integer.MAX_VALUE)
 			this.totalCals = 0;
-		this.totalCals += item.getNutrition().getCalories();
+		this.totalCals += item.getCalories();
 	}
 	public void removeFood(int index){
-		this.grain -= items.get(index).getNutrition().getWholeGrain();
-		this.fruit -= items.get(index).getNutrition().getFruitsVeggies();
-		this.protein -= items.get(index).getNutrition().getProtein();
-		this.other -= items.get(index).getNutrition().getOther();
-		this.totalCals -= items.get(index).getNutrition().getCalories();
+		this.grain -= items.get(index).getWholeGrain();
+		this.fruit -= items.get(index).getFruitsVeggies();
+		this.protein -= items.get(index).getProtein();
+		this.other -= items.get(index).getOther();
+		this.totalCals -= items.get(index).getCalories();
 		this.items.remove(index);
 	}
 	public ArrayList<FoodItem> getFood(){
@@ -67,7 +67,7 @@ public class Hamper{
 	public int getOther(){
 		return this.other;
 	}
-	//Similar to display function, which I used for testing purposes
+	// Displays the contents of the hamper
 	public String displayHamper(){
 		String result = "";
 		Iterator<FoodItem> myIterator = this.items.iterator();
