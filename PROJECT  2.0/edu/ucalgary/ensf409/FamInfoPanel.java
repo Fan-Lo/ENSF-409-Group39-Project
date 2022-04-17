@@ -212,7 +212,13 @@ public class FamInfoPanel extends JFrame implements ActionListener, MouseListene
             request = new Order(family);
         }
         else{
-            request.addFamily(family);
+            try {
+                request.addFamily(family);
+            } catch (NullPointerException e) {
+                JOptionPane.showMessageDialog(this, "Family #1 Info should be filled out first");
+
+            }
+            
         }
     }
 
