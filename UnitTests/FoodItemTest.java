@@ -15,7 +15,9 @@ public class FoodItemTest {
     // Test data
     private FoodItem item = new FoodItem(0, 80, 10, 10, 120, "Tomato Sauce, jar", 1234);
 
-    // Tests the constructor for FoodItem
+    /**
+     * Tests the constructor for FoodItem
+     */
     @Test 
     public void testFoodItemConstructor(){
         FoodItem testFoodITem = new FoodItem(0, 80, 10, 10, 120, "Tomato Sauce, jar", 1234);
@@ -24,7 +26,9 @@ public class FoodItemTest {
         assertNotNull("The FoodITem object is null.", testFoodITem);
     }
 
-    // Tests that getName() method returns the correct name
+    /**
+     * Tests that getName() method returns the correct name
+     */
     @Test
     public void testGetName(){
         String expectedName = "Tomato Sauce, jar";
@@ -35,7 +39,9 @@ public class FoodItemTest {
 
     }
 
-    // Tests that getItemID() method returns the correct ITEM_ID
+    /**
+     * Tests that getItemID() method returns the correct ITEM_ID
+     */
     @Test
     public void testGetItemID(){
         int expectedItemID = 1234;

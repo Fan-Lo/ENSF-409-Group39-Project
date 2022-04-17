@@ -37,6 +37,7 @@ public class FamInfoPanel extends JFrame implements ActionListener, MouseListene
     private int famNumber;
     private int numOfFamilies;
     private static Order request;
+    private static int orderNumber;
     
     // constructor
     public FamInfoPanel(int famNumber,int numFams){
@@ -124,10 +125,11 @@ public class FamInfoPanel extends JFrame implements ActionListener, MouseListene
                 OrderForm orderForm = new OrderForm();
                 try {
 					request.generateHampers();
-                    orderForm.formToTxtFile(request, "orderform.txt");
+                    orderNumber++;
+                    orderForm.formToTxtFile(request, "orderform" + Integer.toString(orderNumber) + ".txt");
 				} catch (ItemNotFoundException e) {
                     JOptionPane.showMessageDialog(this,"Hamper Can't be Created due to a shortage in the Inventory!\n" );
-                    orderForm.formToText("orderform.txt");
+                    orderForm.formToText("orderform" + Integer.toString(orderNumber) + ".txt");
                     setVisible(false);
                     dispose();
 				}

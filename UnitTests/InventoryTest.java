@@ -14,7 +14,9 @@ import java.util.*;
 
 public class InventoryTest {
 
-    //Test the constructor for Inventory
+    /**
+     * Test the constructor for Inventory
+     */
     @Test
     public void testInventoryConstructor(){
         Inventory testInventory = new Inventory();
@@ -23,7 +25,9 @@ public class InventoryTest {
         assertNotNull("The Inventory object is null.", testInventory);
     }
 
-    //Tests if method populate() contains the food items
+    /**
+     * Tests if method populate() contains the food items
+     */
     @Test
     public void testPopulate(){
         Inventory inventory = new Inventory();
@@ -34,7 +38,9 @@ public class InventoryTest {
         assertFalse("The database returned an empty inventory!", empty);
     }
 
-    //Tests if removeItems() remove food items from inventory
+    /**
+     *  Tests if removeItems() remove food items from inventory
+     */
     @Test
     public void testRemoveItem(){
         Inventory inventory = new Inventory();
@@ -46,7 +52,9 @@ public class InventoryTest {
         assertTrue("The food item was not successfully removed from arrayList inventory", itemRemoved);
     }
 
-    //Tests if restoreRemovedItems() restores all the previously removed items if the Order can't be processed due to shortage
+    /**
+     * Tests if restoreRemovedItems() restores all the previously removed items if the Order can't be processed due to shortage
+     */
     @Test
     public void testRestoreRemovedItmes(){
         Inventory inventory = new Inventory();
@@ -63,8 +71,10 @@ public class InventoryTest {
 
     }
 
-    // Tests if removeFromDatabase() removes all the items specified in the ArrayList passed as arguments
-    // allRemoved should be true to confirm this. Otherwise, it is false.
+    /**
+     * Tests if removeFromDatabase() removes all the items specified in the ArrayList passed as arguments.
+     * allRemoved should be true to confirm this. Otherwise, it is false.
+     */
     @Test
     public void testRemoveFromDatabase(){
         Inventory inventory = new Inventory();
@@ -75,15 +85,14 @@ public class InventoryTest {
         itemsToRemove.add(itemToRemove1);
         itemsToRemove.add(itemToRemove2);
 
-        int item1ID = itemToRemove1.getItemID();
-        int item2ID = itemToRemove2.getItemID();
-
         boolean allRemoved = inventory.removeFromDatabase(itemsToRemove);
         assertTrue("Not all items were removed from the database", allRemoved);
 
     }
 
-    //Tests that getFood() returns an ArrayList
+    /**
+     * Tests that getFood() returns an ArrayList
+     */
     @Test
     public void testGetFood(){
         Inventory testInventory = new Inventory();

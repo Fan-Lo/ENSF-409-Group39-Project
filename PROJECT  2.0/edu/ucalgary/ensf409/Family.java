@@ -38,6 +38,8 @@ public class Family{
         database.initializeConnection();
         nutritionalNeeds = database.fetchNutritionalNeeds();;
         // index 0 is male, index 1 is female, index 2 is child above 8 and index 3 is child under 8
+		database.close(); // closes the database after getting the Nutritional Needs
+
 	}
 
 	/**
