@@ -39,6 +39,7 @@ public class Inventory {
 
     /**
      * Removes item from the ArrayList inventory
+	 * @return boolean that indicates whether the removal was successful or not
      */
     public boolean removeItems(FoodItem item) {
         boolean isRemoved = inventory.remove(item); // true if an item is removed from the ArrayList. Otherwise, false.
@@ -48,6 +49,7 @@ public class Inventory {
     /**
      * Called when an attempt to remove an item from the inventory fails (item is not in the inventory anymore)
      * It adds back all the items already removed before the failure
+	 * @return boolean that indicates whether items were added back or not
      */
     public boolean restoreRemovedItems(List<FoodItem> items){
         boolean added = false;
@@ -59,6 +61,7 @@ public class Inventory {
 
     /**
      * Removes all items (that were actually available to fulfill the order) from the database
+	 * @return boolean that indicates whether all items were successfully removed or not
      */
     public boolean removeFromDatabase(ArrayList<FoodItem> itemToRemove) {
         boolean allRemovved = false; 
@@ -70,7 +73,8 @@ public class Inventory {
     }
 	
 	 /**
-     * Returns the ArrayList of food in the inventory
+     * Getter for inventory
+	 * @return The available food in the inventory as an ArrayList of FoodItems
      */
     public ArrayList<FoodItem> getFood() {
         return Inventory.inventory;
