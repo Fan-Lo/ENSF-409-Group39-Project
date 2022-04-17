@@ -2,6 +2,14 @@ package edu.ucalgary.ensf409;
 import java.sql.*;
 import java.util.*;
 
+/**
+ * AccessDatabase creates a Connection to mySQL database and allows for handling
+ * of simple actions such as insert and remove
+ * <p>
+ @author Fanny Lo <a href="mailto:fanny.lo@ucalgary.ca"> fanny.lo@ucalgary.ca<a>
+ @version 1.2
+ @since 1.0
+ */
 public class AccessDatabase{
     public final String DBURL;
     public final String USERNAME;
@@ -41,6 +49,11 @@ public class AccessDatabase{
         return this.PASSWORD;
     }
 	
+    /**
+     * Returns the nutritional needs of all clients in an ArrayList. index 0 is
+     * for adult male, index 1 for adult female, index 2 for child over 8, index 3
+     * for child under 8
+     */
     public ArrayList<Nutrition> fetchNutritionalNeeds(){
         ArrayList<Nutrition> nutritions = new ArrayList<Nutrition>();
 		int grain, fruit, protein, other, cals;
@@ -68,6 +81,10 @@ public class AccessDatabase{
 		return nutritions;
     }
 
+    /**
+     * Returns an array list of all class FoodItem in AVAILABLE_FOOD
+     * @return arraylist of FoodItem
+     */
 	public ArrayList<FoodItem> fetchItems(){
 		ArrayList<FoodItem> food = new ArrayList<FoodItem>();
 		int grain, fruit, protein, other, cals, id;
@@ -96,7 +113,12 @@ public class AccessDatabase{
 		return food;
 	}
 
-    // delete the first occurence of the item
+    /**
+     * Deletes entry in table AVAILABLE_FOOD in database FOOD_INVENTORY where
+     * entry has ItemID is the specificed itemID
+     * @param itemID
+     * @return false if there is SQL exception, true otherwise
+     */
     public boolean deleteFoodItem(int itemID) {
         try{
             String query = "DELETE FROM AVAILABLE_FOOD WHERE ItemID = ?";
@@ -115,6 +137,9 @@ public class AccessDatabase{
 
     }
 
+    /**
+     * close method of the database where resutlset and connection are closed.
+     */
     public void close() {
         try {
             results.close();
@@ -122,6 +147,33 @@ public class AccessDatabase{
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * itemIsPresent checks if the food item with itemID is present in the database.
+     * returns a boolean value of true if present, false is not presnet
+     * @param itemID itemID of the food item of inquiry
+     * @return boolean value indicating if the item is present or not
+     */
+    public boolean itemIsPresent(int itemID) {
+        boolean bool = true;
+        try {
+            String query = "SELECT * FROM AVILABLE_FOOD WHERE ItemID = ?";
+            PreparedStatement myStmt = dbConnect.prepareStatement(query);
+
+            myStmt.setInt(1, itemID);
+            int rowCount = myStmt.executeUpdate();
+
+            // item is in the table still
+            if (rowCount != 0) {
+                bool = false;
+            }
+
+            myStmt.clearParameters();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return bool;
     }
 
 }
