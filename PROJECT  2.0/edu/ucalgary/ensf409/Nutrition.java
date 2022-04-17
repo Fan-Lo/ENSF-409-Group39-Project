@@ -1,7 +1,7 @@
 /** 
 * Nutrition.java
 * 
-* @version 1.6
+* @version 2.6
 * @since 1.5
 * Now a superclass to FoodItem
 *	

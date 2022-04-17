@@ -1,0 +1,25 @@
+Hamper Order Form
+
+Name:
+Date:
+
+Original Request
+Hamper 1: 1 Adult Male, 0 Adult Female, 0 Child Over 8, 0 Child Under 8 
+
+Hamper 1 Items: 
+60	Mayonnaise, 1 kg
+84	Wheaties, family size
+94	Canned corn, 1 tin
+102	Black beans, 1 kg
+116	Oatmeal, 10 packets
+124	Tinned sardines, pack of 5
+127	Grape jelly
+134	Salmon, 5 filets
+137	Roasted mixed nuts, 56 oz
+139	Pearl barley, 1 pound
+140	Plaintain, 4
+145	Raisins, 40 g
+146	Dates, container
+151	Peaches, crate
+
+

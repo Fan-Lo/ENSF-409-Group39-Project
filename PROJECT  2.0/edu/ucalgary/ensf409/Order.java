@@ -10,7 +10,7 @@ import java.util.*;
  * in the inventory.
  * <p>
  @author Fanny Lo <a href="mailto:fanny.lo@ucalgary.ca"> fanny.lo@ucalgary.ca<a>
- @version 1.4
+ @version 2.4
  @since 1.0
  */
 public class Order {

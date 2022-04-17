@@ -1,8 +1,8 @@
 /**
 @author     Justin Kuhn
 href= "mailto:justinkuhn@ucalgary.ca">justin.kuhn@ucalgary.ca</a>
-@version    1.5
-@since      1.4
+@version    2.5
+@since      1.0
 Added trim() method
  *
  * the Family class has member variables hamper which is the unique hamper

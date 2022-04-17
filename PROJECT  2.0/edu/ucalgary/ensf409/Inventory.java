@@ -1,6 +1,6 @@
 /** 
 * @author Jan Petallo <ahref="mailto:jan.petallo@ucalgary.ca">jan.petallo@ucalgary.ca</a>
-* @version 1.5
+* @version 2.5
 * @since 1.0	
 *
 */   

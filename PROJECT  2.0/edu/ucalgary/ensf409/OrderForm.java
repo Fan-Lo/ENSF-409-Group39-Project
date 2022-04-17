@@ -6,7 +6,7 @@ import java.io.*;
  * order form into a text file.
  * <p>
  @author Fanny Lo <a href="mailto:fanny.lo@ucalgary.ca"> fanny.lo@ucalgary.ca<a>
- @version 1.1
+ @version 2.1
  @since 1.0
  */
 public class OrderForm {

@@ -1,13 +1,11 @@
 # ENSF-409-Group-Project
 ## Table of contents
 
+* [Problem Definition](#problem-definition)
 * [Versions](#versions)
-* [Problem] (#p)
 * [Technologies](#technologies)
 * [Contributors](#contributors)
 * [Licence](#licence)
-
-
 
 ## Problem Definition
 Our client requested an application that allows for efficient generation of food hampers 
@@ -18,29 +16,60 @@ for information regarding food availability and clinet needs. An ideal hamper ge
 More information on problem definition and client specification: [here](./Project_Handout.pdf)
 
 ## Versions
-* project 2.0 is the most current 
+* Version 2.0 (code found in folder Project 2.0) is the most current version that fulfills the requirement of the problem definition. An overview of 2.0 version can be seen in the final [UML diagram](./Final_UML.pdf).
 
 ## Technologies
 Project is created with:
 * Java: JDK 11
 
-Library file used:
+Library files used:
 * mysql-connector-java-8.0.23.jar
 * junit-4.13.2.jar
 * hamcrest-core-1.3.jar
 
 
 ## Setup
-To compile the program, open the working directory of the file in the terminal, then compile using
+To compile the program, open the working directory of the file in the terminal, then compile using:
+* Mac OS
 ```
 javac -cp .:./lib/mysql-connector-java-8.0.23.jar edu/ucalgary/ensf409/*.java
 ```
+
+* Windows
+```
+javac -cp .;lib/mysql-connector-java-8.0.23.jar edu/ucalgary/ensf409/*
+```
 To execute the program use
+
+* For Mac OS
 ```
 java -cp .:./lib/mysql-connector-java-8.0.23.jar edu.ucalgary.ensf409.GUI
+```
+* Windows
+```
+java -cp .;lib/mysql-connector-java-8.0.23.jar edu.ucalgary.ensf409.GUI
 ```
 
 
 ## Contributors
+* Nooreldeen Abdallah (NooreldeenAbd)
+* Justin Kuhn (Justin-kuhn)
+* Fanny Lo (Fan-Lo)
+* Jan Petallo (janpetallo)
 
 ## Licence
+
+Copyright [2022]
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+

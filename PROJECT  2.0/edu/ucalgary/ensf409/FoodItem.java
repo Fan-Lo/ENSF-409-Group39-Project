@@ -1,7 +1,7 @@
 /** 
 * FoodItem.java
 * @author Jan Petallo <ahref="mailto:jan.petallo@ucalgary.ca">jan.petallo@ucalgary.ca</a>
-* @version 1.4
+* @version 2.4
 * @since 1.3
 * Updated to have inheritance	
 *

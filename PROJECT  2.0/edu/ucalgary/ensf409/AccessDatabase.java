@@ -7,7 +7,7 @@ import java.util.*;
  * of simple actions such as insert and remove
  * <p>
  @author Fanny Lo <a href="mailto:fanny.lo@ucalgary.ca"> fanny.lo@ucalgary.ca<a>
- @version 1.2
+ @version 2.2
  @since 1.0
  */
 public class AccessDatabase{
