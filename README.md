@@ -41,7 +41,7 @@ javac -cp .;lib/mysql-connector-java-8.0.23.jar edu/ucalgary/ensf409/*
 ```
 To execute the program use
 
-* For Mac OS
+* Mac OS
 ```
 java -cp .:./lib/mysql-connector-java-8.0.23.jar edu.ucalgary.ensf409.GUI
 ```
