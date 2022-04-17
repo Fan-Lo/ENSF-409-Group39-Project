@@ -33,7 +33,7 @@ public class Order {
     }
 
     // getter for families
-    public ArrayList<Family> getFamiles() {
+    public ArrayList<Family> getFamilies() {
         return this.families;
     }
 

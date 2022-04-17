@@ -27,8 +27,12 @@ public class OrderForm {
         }
     }
  
+    /**
+     * This method is called when there is not enough food in inventory to complete an Order request
+     * @param output
+     */
       public void formToText(String output){
-        String shortage = "Hamper Order Form: \n\nThere is currently not enough food items to fulifill you request.\nThank you!";
+        String shortage = "Hamper Order Form: \n\nThere is currently not enough food items to fulfill you request.\nThank you!";
         try {
             FileWriter writer = new FileWriter(output);
             writer.write(shortage);

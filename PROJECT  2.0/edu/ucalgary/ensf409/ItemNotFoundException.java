@@ -6,6 +6,6 @@ public class ItemNotFoundException extends Exception{
     }
 
     public ItemNotFoundException(String foodItem) {
-        super(foodItem + "cannot be removed");
+        super(foodItem + " cannot be removed");
     }
 }
