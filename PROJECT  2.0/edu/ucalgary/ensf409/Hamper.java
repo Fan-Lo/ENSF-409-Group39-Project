@@ -1,5 +1,5 @@
  /**
- * the Hamper class is used to store combinations of FoodItems, which could 
+ * The Hamper class is used to store combinations of FoodItems, which could 
  * potentially be given to a family to sustain them for one week.
  * It has member variables items, which is an ArrayList of all the FoodItems
  * it contains, and integers to represent the cumulative sum of all the 
