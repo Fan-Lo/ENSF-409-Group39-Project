@@ -4,7 +4,7 @@
 * [Problem Definition](#problem-definition)
 * [Versions](#versions)
 * [Technologies](#technologies)
-* [Setup] (#setup)
+* [Setup](#setup) 
 * [Contributors](#contributors)
 * [Licence](#licence)
 
