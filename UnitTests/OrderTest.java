@@ -8,8 +8,6 @@
 package edu.ucalgary.ensf409;
 import org.junit.*;
 import static org.junit.Assert.*;
-
-import java.sql.SQLException;
 import java.util.*;
 
 
@@ -118,6 +116,24 @@ public class OrderTest {
 
         assertTrue("Hampers created for families do not meet the nutritional needs of the families", hamperIsValid);
         assertTrue("Hamper item is still present in inventory", hamperDeletedFromInv);
+    }
+
+    /**
+     * This tests boundary condition family is too large and order cannot be completed
+     */
+    @Test
+    public void testGenerateHamperBadOrder() {
+        // this fmaily has 40 people which cause food shortage
+        Family badFamily = new Family(10, 10, 10, 10);
+        Order badOrder = new Order(badFamily);
+        boolean exceptionIsThrown = false;
+        try {
+            badOrder.generateHampers();
+        } catch (ItemNotFoundException e) {
+            exceptionIsThrown = true;
+        }
+
+        assertTrue("Exception is not thrown when there is food shortage in inventory", exceptionIsThrown);
     }
 
     /**

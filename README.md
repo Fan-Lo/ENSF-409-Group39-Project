@@ -1,11 +1,15 @@
 # ENSF-409-Group-Project
 ## Table of contents
-* [Introduction](#introduction)
+
+* [Versions](#versions)
+* [Problem] (#p)
 * [Technologies](#technologies)
 * [Contributors](#contributors)
-## Introduction
+* [Licence](#licence)
 
-### Problem Definition
+
+
+## Problem Definition
 Our client requested an application that allows for efficient generation of food hampers 
 based on specificed inventory availability and family nutrional needs. The program should
 allow user interaction using a graphical user interface and access to an mySQL database 
@@ -13,6 +17,8 @@ for information regarding food availability and clinet needs. An ideal hamper ge
 
 More information on problem definition and client specification: [here](./Project_Handout.pdf)
 
+## Versions
+* project 2.0 is the most current 
 
 ## Technologies
 Project is created with:
@@ -36,3 +42,5 @@ java -cp .:./lib/mysql-connector-java-8.0.23.jar edu.ucalgary.ensf409.GUI
 
 
 ## Contributors
+
+## Licence
