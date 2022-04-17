@@ -5,7 +5,7 @@
 * @since 1.5
 * Now a superclass to FoodItem
 *	
-* the Nutrition class has member variables wholeGrain which is the amount of grain calories a
+* The Nutrition class has member variables wholeGrain which is the amount of grain calories a
 * FoodItem contains, fruitsVeggies which is the amount of fruits/veggies calories a
 * FoodItem contains, protein which is the amount of protein calories a FoodItem contains,
 * other which is the amount of other calories a FoodItem contains, and calories which is the total
