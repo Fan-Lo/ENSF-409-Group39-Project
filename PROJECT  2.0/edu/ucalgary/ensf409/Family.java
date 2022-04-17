@@ -5,7 +5,7 @@ href= "mailto:justinkuhn@ucalgary.ca">justin.kuhn@ucalgary.ca</a>
 @since      1.4
 Added trim() method
  *
- * the Family class takes has member variables hamper which is the unique hamper
+ * the Family class has member variables hamper which is the unique hamper
  * generated for this particular family, integers which represent the number of each
  * type of client in the system, an AccessDatabase object to be able to extract nutritional 
  * information from the database, and an ArrayList of Nutritions, each one corresponding to 
