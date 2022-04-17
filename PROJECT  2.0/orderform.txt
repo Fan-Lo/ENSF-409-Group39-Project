@@ -4,15 +4,15 @@ Name:
 Date:
 
 Original Request
-Hamper 1: 0 Adult Male, 1 Adult Female, 0 Child Over 8, 2 Child Under 8 
+Hamper 1: 0 Adult Male, 1 Adult Female, 0 Child Over 8, 0 Child Under 8 
+Hamper 2: 1 Adult Male, 0 Adult Female, 0 Child Over 8, 0 Child Under 8 
 
 Hamper 1 Items: 
+2	Tomato Sauce, jar
 4	Apple, dozen
 5	Apple, dozen
 6	Granola Bar, box
-7	Chicken broth, can
 9	Broccoli, 3 bunches
-10	Broccoli, 3 bunches
 11	Wheat bread, loaf
 12	Wheat bread, loaf
 13	Wheat bread, loaf
@@ -30,20 +30,21 @@ Hamper 1 Items:
 25	Cheddar cheese, pound
 26	Quinoa, pound
 28	Bananas, bunch
-30	Whole grain bread, loaf
 31	Ground beef, pound
 32	Ground beef, pound
+
+
+Hamper 2 Items: 
+1	Tomato Sauce, jar
+7	Chicken broth, can
+10	Broccoli, 3 bunches
 33	Ground beef, pound
 34	Avocado, dozen
 35	Avocado, dozen
 37	Pasta, dry, two pounds
 38	Pasta, dry, two pounds
-39	Oatmeal cookies, dozen
 40	Peanut butter, 2 kg jar
 41	Bran flakes, 1 kg
-42	Nutella, 1 kg
 43	Ground pork, pound
-44	Meatballs, 1 kg
-47	Pancake mix, 1 kg
 
 
