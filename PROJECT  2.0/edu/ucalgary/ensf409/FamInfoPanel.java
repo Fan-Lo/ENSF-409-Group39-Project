@@ -113,7 +113,12 @@ public class FamInfoPanel extends JFrame implements ActionListener, MouseListene
         
         if(validateInput()){
 
-            generateOrder();
+            try {
+                generateOrder();
+            } catch (NullPointerException e) {
+                JOptionPane.showMessageDialog(this, "Family #1 Info should be filled out first");
+
+            }
 
             if (famNumber == numOfFamilies){ // this means we need to start creating hampers now 
                 OrderForm orderForm = new OrderForm();
@@ -212,13 +217,7 @@ public class FamInfoPanel extends JFrame implements ActionListener, MouseListene
             request = new Order(family);
         }
         else{
-            try {
                 request.addFamily(family);
-            } catch (NullPointerException e) {
-                JOptionPane.showMessageDialog(this, "Family #1 Info should be filled out first");
-
-            }
-            
         }
     }
 

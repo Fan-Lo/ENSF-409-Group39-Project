@@ -48,6 +48,7 @@ public class Order {
                     ArrayList<FoodItem> itemsToRemove = families.get(j).getHamper().getFood();
                     inventory.restoreRemovedItems(itemsToRemove);
                 }
+                inventory.closeDatabase(); // we close the database after an unsuccessful run
                 throw new ItemNotFoundException();
             }
         }
@@ -57,6 +58,9 @@ public class Order {
             ArrayList<FoodItem> itemsToRemove = fam.getHamper().getFood();
             inventory.removeFromDatabase(itemsToRemove);
         }
+
+        // we close the database after a successful run
+        inventory.closeDatabase(); 
     }
 
 

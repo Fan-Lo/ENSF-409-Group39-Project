@@ -79,4 +79,10 @@ public class Inventory {
     public ArrayList<FoodItem> getFood() {
         return Inventory.inventory;
     }
+    /**
+     * Closes the database
+     */
+    public void closeDatabase(){
+        database.close();
+    }
 }
