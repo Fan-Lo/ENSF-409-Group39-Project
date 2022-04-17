@@ -124,4 +124,25 @@ public class AccessDatabase{
         }
     }
 
+    public boolean itemIsPresent(int itemID) {
+        boolean bool = true;
+        try {
+            String query = "SELECT * FROM AVILABLE_FOOD WHERE ItemID = ?";
+            PreparedStatement myStmt = dbConnect.prepareStatement(query);
+
+            myStmt.setInt(1, itemID);
+            int rowCount = myStmt.executeUpdate();
+
+            // item is in the table still
+            if (rowCount != 0) {
+                bool = false;
+            }
+
+            myStmt.clearParameters();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return bool;
+    }
+
 }
