@@ -4,6 +4,13 @@ href= "mailto:justinkuhn@ucalgary.ca">justin.kuhn@ucalgary.ca</a>
 @version    1.4
 @since      1.3
 Added trim() method
+ *
+ * the Family class takes has member variables hamper which is the unique hamper
+ * generated for this particular family, integers which represent the number of each
+ * type of client in the system, an AccessDatabase object to be able to extract nutritional 
+ * information from the database, and an ArrayList of Nutritions, each one corresponding to 
+ * the nutritional needs of each type of client.
+ * 
  */
 
 package edu.ucalgary.ensf409;
@@ -16,6 +23,13 @@ public class Family{
     private AccessDatabase database = new AccessDatabase("jdbc:mysql://localhost/food_inventory","student","ensf");
     private ArrayList<Nutrition> nutritionalNeeds;
 
+	/**
+     * Constructs a new Family given the number of each type of client
+     * @param numAMale Number of adult males
+	 * @param numAFemale Number of adult females
+	 * @param numChildA8 Number of children above 8
+	 * @param numChildU8 Number of children under 8
+     */
 	public Family(int numAMale, int numAFemale, int numChildA8, int numChildU8){
 		this.numAMale = numAMale;
         this.numAFemale = numAFemale;
@@ -26,6 +40,10 @@ public class Family{
         // index 0 is male, index 1 is female, index 2 is child above 8 and index 3 is child under 8
 	}
 
+	/**
+     * Calculates weekly grain needs of the entire family
+	 * @return sum of each family member's daily grain needs multiplied by 7
+     */
 	public int getWeeklyGrainNeeds(){
 		int grain = 0;
 
@@ -36,6 +54,11 @@ public class Family{
 
 		return grain*7;
 	}
+	
+	/**
+     * Calculates weekly veggie needs of the entire family
+	 * @return sum of each family member's daily veggie needs multiplied by 7
+     */
 	public int getWeeklyVeggieNeeds(){
 		int veggie = 0;
 
@@ -46,6 +69,11 @@ public class Family{
 
 		return veggie*7;
 	}
+	
+	/**
+     * Calculates weekly protein needs of the entire family
+	 * @return sum of each family member's daily protein needs multiplied by 7
+     */
 	public int getWeeklyProteinNeeds(){
 		int protein = 0;
 
@@ -56,6 +84,11 @@ public class Family{
 
 		return protein*7;
 	}
+	
+	/**
+     * Calculates weekly other needs of the entire family
+	 * @return sum of each family member's daily other needs multiplied by 7
+     */
 	public int getWeeklyOtherNeeds(){
 		int other = 0;
 
@@ -65,6 +98,11 @@ public class Family{
         other += (numChildU8 * nutritionalNeeds.get(3).getOther());
 		return other*7;
 	}
+	
+	/**
+     * Calculates weekly total calorie needs of the entire family
+	 * @return sum of each family member's daily total calorie needs multiplied by 7
+     */
 	public int getWeeklyCalorieNeeds(){
 		int calories = 0;
 
@@ -76,7 +114,11 @@ public class Family{
 		return calories*7;
 	}
 
-
+	/**
+     * Creates a hamper for the family from a given inventory
+     * @param inventory The inventory from which food is used from
+	 * @throws ItemNotFoundException is thrown when a hamper could not be created
+     */
 	public void createHamper(Inventory inventory) throws ItemNotFoundException{
 		int totalNeeds = this.getWeeklyCalorieNeeds();
 		int minCals = this.getWeeklyCalorieNeeds(), minGrain = this.getWeeklyGrainNeeds(), minFruit = this.getWeeklyVeggieNeeds(),
@@ -85,8 +127,6 @@ public class Family{
 		ArrayList<Hamper> needsSet = optimizeCals(foodAsList);
 
 		if(needsSet.size() == 0){
-			// there are some instances this happens in my testing
-			// TODO: need a logic that handles this or maybe this is enough
 			throw new ItemNotFoundException();
 		}
 		
@@ -103,6 +143,10 @@ public class Family{
 		this.hamper = mostEfficient; 
 	}
 	
+	/**
+     * Helper function to get rid of some unnecessary food after hamper generation
+     * @param hamper Hamper to remove food from
+     */
 	private void trim(Hamper hamper){
 		int minCals = this.getWeeklyCalorieNeeds(), minGrain = this.getWeeklyGrainNeeds(), minFruit = this.getWeeklyVeggieNeeds(),
 		minProtein = this.getWeeklyProteinNeeds(), minOther = this.getWeeklyOtherNeeds(); //Getting the minimum values of each category
@@ -118,6 +162,11 @@ public class Family{
 		}
 	}
 	
+	/**
+     * Helper function to produce an ArrayList of potential hampers that meet all of the family's needs
+     * @param foods Available food from the given inventory
+	 * @return ArrayList containing potential hampers that meet the family's needs
+     */
 	private ArrayList<Hamper> optimizeCals(ArrayList<FoodItem> foods) {
         int maxCals = 0, minCals = this.getWeeklyCalorieNeeds(), grain = this.getWeeklyGrainNeeds(), fruit = this.getWeeklyVeggieNeeds(),
 		protein = this.getWeeklyProteinNeeds(), other = this.getWeeklyOtherNeeds();
@@ -153,21 +202,43 @@ public class Family{
         }
         return minHampers;
     }
+	
+	/**
+     * Getter of the family's hamper
+	 * @return This particular family's hamper
+     */
 	public Hamper getHamper(){
 		return this.hamper;
 	}
 
+	/**
+     * Getter for numAMale
+	 * @return number of adult males in family
+     */
     public int getNumAMale(){
         return this.numAMale;
     }
 
+	/**
+     * Getter for numAFemale
+	 * @return number of adult females in family
+     */
     public int getNumAFemale(){
         return this.numAFemale;
     }
+	
+	/**
+     * Getter for numChildA8
+	 * @return number of children above 8 in family
+     */
     public int getNumChildA8(){
         return this.numChildA8;
     }
 
+	/**
+     * Getter for numChildU8
+	 * @return number of children under 8 in family
+     */
     public int getNumChildU8(){
         return this.numChildU8;
     }
