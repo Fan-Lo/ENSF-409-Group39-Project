@@ -95,6 +95,7 @@ public class FamilyTest {
 	// Test createHamper()
     @Test
     public void testCreateHamper() throws ItemNotFoundException{
+		boolean hamperMeetsNeeds = true;
 		int aMale = 1, aFemale = 0, childA8 = 0, childU8 = 0;
 		Family testFamily = new Family(aMale, aFemale, childA8, childU8);
 		Inventory inventory = new Inventory();
@@ -102,8 +103,28 @@ public class FamilyTest {
 		testFamily.createHamper(inventory);
 		Hamper theHamper = testFamily.getHamper();
 		
-		// Assert that createHamper() created a hamper properly
-		assertNotNull("createHamper() did not create a hamper properly.", theHamper);
+		int grainInHamper = theHamper.getGrain();
+        int fvInHamper = theHamper.getFruit();
+        int proInHamper = theHamper.getProtein();
+        int otherInHamper = theHamper.getOther();
+        int calInHamper = theHamper.getCalories();
+		
+		if (grainInHamper < testFamily.getWeeklyGrainNeeds()) {
+            hamperMeetsNeeds = false;
+        } else if (fvInHamper < testFamily.getWeeklyVeggieNeeds()) {
+            hamperMeetsNeeds = false;
+        } else if (proInHamper < testFamily.getWeeklyProteinNeeds()) {
+            hamperMeetsNeeds = false;
+        } else if (otherInHamper < testFamily.getWeeklyOtherNeeds()) {
+            hamperMeetsNeeds = false;
+        } else if (calInHamper < testFamily.getWeeklyCalorieNeeds()) {
+            hamperMeetsNeeds = false;
+        } else {
+            hamperMeetsNeeds = true;
+        }
+		
+		// Assert that createHamper() created a hamper that meets the family's weekly needs
+		assertEquals("createHamper() created a hamper that didn't meet the family needs.", true, hamperMeetsNeeds);
     }
 	
 	// Test getHamper()
