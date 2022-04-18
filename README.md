@@ -4,7 +4,8 @@
 * [Problem Definition](#problem-definition)
 * [Versions](#versions)
 * [Technologies](#technologies)
-* [Setup](#setup) 
+* [Setup for Application Use](#setup-for-application-use) 
+* [Setup for Unit Testing](#setup-for-unit-test)
 * [Contributors](#contributors)
 * [Licence](#licence)
 
@@ -29,7 +30,7 @@ Library files used:
 * hamcrest-core-1.3.jar
 
 
-## Setup
+## Setup for Application Use
 To compile the program, open the working directory of the file in the terminal, then compile using:
 * Mac OS
 ```
@@ -51,7 +52,25 @@ java -cp .:./lib/mysql-connector-java-8.0.23.jar edu.ucalgary.ensf409.GUI
 java -cp .;lib/mysql-connector-java-8.0.23.jar edu.ucalgary.ensf409.GUI
 ```
 
-
+## Setup for Unit Test
+To run the unit test, compile using:
+* Mac OS
+```
+javac -cp .:lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar:.:lib/mysql-connector-java-8.0.23.jar edu/ucalgary/ensf409/*.java
+```
+* Windows
+```
+javac -cp .;lib/hamcrest-core-1.3.jar;lib/junit-4.13.2.jar;lib/mysql-connector-java-8.0.23.jar edu/ucalgary/ensf409/FamilyTest.java
+```
+Execute using command (example given for InventoryTest):
+* Mac OS
+```
+java -cp .:lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar:.:lib/mysql-connector-java-8.0.23.jar org.junit.runner.JUnitCore edu.ucalgary.ensf409.InventoryTest
+```
+* Windows
+```
+java -cp .;lib/hamcrest-core-1.3.jar;lib/junit-4.13.2.jar;lib/mysql-connector-java-8.0.23.jar org.junit.runner.JUnitCore edu.ucalgary.ensf409.InventoryTest
+```
 ## Contributors
 * Nooreldeen Abdallah (NooreldeenAbd)
 * Justin Kuhn (Justin-kuhn)
