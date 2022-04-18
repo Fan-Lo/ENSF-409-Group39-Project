@@ -53,23 +53,23 @@ java -cp .;lib/mysql-connector-java-8.0.23.jar edu.ucalgary.ensf409.GUI
 ```
 
 ## Setup for Unit Test
-To run the unit test, compile using:
+Be sure to restore the FOOD_INVENTORY database before running unit test to ensure enough food is in the inventory to generate hampers. To run the unit test, compile using:
 * Mac OS
 ```
-javac -cp .:lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar:.:lib/mysql-connector-java-8.0.23.jar edu/ucalgary/ensf409/*.java
+javac -cp .:lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar:.:lib/mysql-connector-java-8.0.23.jar edu/ucalgary/ensf409/ProjectTest.java
 ```
 * Windows
 ```
-javac -cp .;lib/hamcrest-core-1.3.jar;lib/junit-4.13.2.jar;lib/mysql-connector-java-8.0.23.jar edu/ucalgary/ensf409/FamilyTest.java
+javac -cp .;lib/hamcrest-core-1.3.jar;lib/junit-4.13.2.jar;lib/mysql-connector-java-8.0.23.jar edu/ucalgary/ensf409/ProjectTest.java
 ```
-Execute using command (example given for InventoryTest):
+Execute using command :
 * Mac OS
 ```
-java -cp .:lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar:.:lib/mysql-connector-java-8.0.23.jar org.junit.runner.JUnitCore edu.ucalgary.ensf409.InventoryTest
+java -cp .:lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar:.:lib/mysql-connector-java-8.0.23.jar org.junit.runner.JUnitCore edu.ucalgary.ensf409.ProjectTest
 ```
 * Windows
 ```
-java -cp .;lib/hamcrest-core-1.3.jar;lib/junit-4.13.2.jar;lib/mysql-connector-java-8.0.23.jar org.junit.runner.JUnitCore edu.ucalgary.ensf409.InventoryTest
+java -cp .;lib/hamcrest-core-1.3.jar;lib/junit-4.13.2.jar;lib/mysql-connector-java-8.0.23.jar org.junit.runner.JUnitCore edu.ucalgary.ensf409.ProjectTest
 ```
 ## Contributors
 * Nooreldeen Abdallah (NooreldeenAbd)
