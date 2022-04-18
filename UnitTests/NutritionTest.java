@@ -1,3 +1,9 @@
+/** 
+* NutritionTest.java
+* @version 2.3
+* @since 1.0	
+**/  
+
 package edu.ucalgary.ensf409;
 
 import org.junit.Test;
@@ -5,127 +11,80 @@ import org.junit.Assert;
 import static org.junit.Assert.*;
 
 public class NutritionTest {
-
-    public int myGrain = 10;
-    public int myVegFru = 20;
-    public int myProtien = 30;
-    public int myCalories = 40;
-    public int myOther = 50;
-    
-
-    public Nutrition myNut = new Nutrition(myGrain, myVegFru, 
-        myProtien, myOther, myCalories);
-
-    public Nutrition myWeekly = myNut.getWeeklyNeeds();
-
-    
-    // Test getGrain
+	 public NutritionTest() { }
+	 
+	// Test the constructor for Nutrition
     @Test
-    public void testGetGrain() {
-            
-        int returnGrain = myNut.getWholeGrain();
-           
-        assertEquals(
-            "Whole Grain was not return properly from Nutrition: ",
-            myGrain, returnGrain);
-    }
+    public void testNutritionConstructor() {
+		int grain = 16, fruit = 28, protein = 26, other = 30, total = 2500;
+		Nutrition myNutrition = new Nutrition(grain, fruit, protein, other, total);
 
-    // Test fruits/vegs
+	    // Assert that Nutrition constructor creates a valid Object
+        assertNotNull("The Nutrition object is null.", myNutrition); 
+    }
+	
+	// Test getWholeGrain()
     @Test
-    public void testGetFruitVeggies() {
-            
-        int returnVegFru = myNut.getFruitsVeggies();
-           
-        assertEquals(
-            "Fruits/Veg was not return properly from Nutrition: ",
-            myVegFru, returnVegFru);
-    }
+    public void testGetWholeGrain() {
+		int grain = 16, fruit = 28, protein = 26, other = 30, total = 2500;
+		Nutrition myNutrition = new Nutrition(grain, fruit, protein, other, total);
+		
+		int expectedWholeGrain = (int)Math.ceil((grain/(double)100) * total);
+		int actualWholeGrain = myNutrition.getWholeGrain();
 
-    // Test protien
+	    // Assert that getWholeGrain() returns the correct value
+		assertEquals("getWholeGrain() returned the incorrect value.", expectedWholeGrain, actualWholeGrain); 
+    }
+	
+	// Test getFruitsVeggies()
     @Test
-    public void testGetProtien() {
-            
-        int returnPro = myNut.getProtien();
-           
-        assertEquals(
-            "Protien was not return properly from Nutrition: ",
-            myProtien, returnPro);
-    }
+    public void testGetFruitsVeggies() {
+		int grain = 16, fruit = 28, protein = 26, other = 30, total = 2500;
+		Nutrition myNutrition = new Nutrition(grain, fruit, protein, other, total);
+		
+		int expectedFruitsVeggies = (int)Math.ceil((fruit/(double)100) * total);
+		int actualFruitsVeggies = myNutrition.getFruitsVeggies();
 
-    // Test cals
+	    // Assert that getFruitsVeggies() returns the correct value
+		assertEquals("getFruitsVeggies() returned the incorrect value.", expectedFruitsVeggies, actualFruitsVeggies); 
+    }
+	
+	// Test getProtein()
     @Test
-    public void testGetCals() {
-                
-        int returnCal= myNut.getCalories();
-               
-        assertEquals(
-            "Calories was not return properly from Nutrition: ",
-            myCalories, returnCal);
-    }
+    public void testGetProtein() {
+		int grain = 16, fruit = 28, protein = 26, other = 30, total = 2500;
+		Nutrition myNutrition = new Nutrition(grain, fruit, protein, other, total);
+		
+		int expectedProtein = (int)Math.ceil((protein/(double)100) * total);
+		int actualProtein = myNutrition.getProtein();
 
-    // Test other
+	    // Assert that getProtein() returns the correct value
+		assertEquals("getProtein() returned the incorrect value.", expectedProtein, actualProtein); 
+    }
+	
+	// Test getOther()
     @Test
     public void testGetOther() {
-                
-        int returnOther= myNut.getProtien();
-               
-        assertEquals(
-            "Other was not return properly from Nutrition: ",
-            myOther, returnOther);
-    }
+		int grain = 16, fruit = 28, protein = 26, other = 30, total = 2500;
+		Nutrition myNutrition = new Nutrition(grain, fruit, protein, other, total);
+		
+		int expectedOther = (int)Math.ceil((other/(double)100) * total);
+		int actualOther = myNutrition.getOther();
 
-    // Test getGrain
-    @Test
-    public void testGetGrainWeek() {
-            
-        int returnGrain = myWeekly.getWholeGrain();
-           
-        assertEquals(
-            "Weekly Whole Grain was not return properly from Nutrition: ",
-            myGrain*7, returnGrain);
+	    // Assert that getOther() returns the correct value
+		assertEquals("getOther() returned the incorrect value.", expectedOther, actualOther); 
     }
-
-    // Test fruits/vegs
+	
+	// Test getCalories()
     @Test
-    public void testGetFruitVeggiesWeek() {
-            
-        int returnVegFru = myWeekly.getFruitsVeggies();
-           
-        assertEquals(
-            "Weekly Fruits/Veg was not return properly from Nutrition: ",
-            myVegFru*7, returnVegFru);
-    }
+    public void testGetCalories() {
+		int grain = 16, fruit = 28, protein = 26, other = 30, total = 2500;
+		Nutrition myNutrition = new Nutrition(grain, fruit, protein, other, total);
+		
+		int expectedCalories = total;
+		int actualCalories = myNutrition.getCalories();
 
-    // Test protien
-    @Test
-    public void testGetProtienWeek() {
-            
-        int returnPro = myWeekly.getProtien();
-           
-        assertEquals(
-            "Weekly Protien was not return properly from Nutrition: ",
-            myProtien*7, returnPro);
-    }
-
-    // Test cals
-    @Test
-    public void testGetCalsWeek() {
-                
-        int returnCal= myWeekly.getCalories();
-               
-        assertEquals(
-            "Weekly Calories was not return properly from Nutrition: ",
-            myCalories*7, returnCal);
-    }
-
-    // Test other
-    @Test
-    public void testGetOtherWeek() {
-                
-        int returnOther= myWeekly.getProtien();
-               
-        assertEquals(
-            "Weekly Other was not return properly from Nutrition: ",
-            myOther*7, returnOther);
+	    // Assert that getCalories() returns the correct value
+		assertEquals("getCalories() returned the incorrect value.", expectedCalories, actualCalories); 
     }
 }
