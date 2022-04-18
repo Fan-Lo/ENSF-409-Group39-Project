@@ -120,6 +120,18 @@ public class FamilyTest {
 		assertNotNull("getHamper() did not return the correct hamper.", theHamper);
     }
 	
+	// Test ItemNotFoundException
+    @Test(expected = ItemNotFoundException.class)
+    public void testItemNotFoundException() throws ItemNotFoundException{
+		int aMale = 10, aFemale = 10, childA8 = 10, childU8 = 10;
+		Family testFamily = new Family(aMale, aFemale, childA8, childU8);
+		Inventory inventory = new Inventory();
+		
+		testFamily.createHamper(inventory);
+		// Intentionally creating a family with too many members, which should throw this Exception
+		// as there is not enough food in the inventory to meet all of their needs.
+    }
+	
 	// Test getNumAMale()
     @Test
     public void testGetNumAMale() {
