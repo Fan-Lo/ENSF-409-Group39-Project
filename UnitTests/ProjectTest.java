@@ -742,7 +742,7 @@ public class ProjectTest {
 	
 	// Test getFood()
     @Test
-    public void testGetFood() {
+    public void testHamperGetFood() {
 		boolean correctList = true;
 		Hamper testHamper = new Hamper();
 		testHamper.addFood(new FoodItem(10, 20, 30, 40, 100, "Apple", 1));
@@ -798,7 +798,7 @@ public class ProjectTest {
 	
 	// Test getProtein()
     @Test
-    public void testGetProtein() {
+    public void testHamperGetProtein() {
 		Hamper testHamper = new Hamper();
 		testHamper.addFood(new FoodItem(10, 20, 30, 40, 100, "Apple", 1));
 		testHamper.addFood(new FoodItem(10, 20, 30, 40, 100, "Banana", 2));
@@ -814,7 +814,7 @@ public class ProjectTest {
 	
 	// Test getOther()
     @Test
-    public void testGetOther() {
+    public void testHamperGetOther() {
 		Hamper testHamper = new Hamper();
 		testHamper.addFood(new FoodItem(10, 20, 30, 40, 100, "Apple", 1));
 		testHamper.addFood(new FoodItem(10, 20, 30, 40, 100, "Banana", 2));
@@ -830,7 +830,7 @@ public class ProjectTest {
 	
 	// Test getCalories()
     @Test
-    public void testGetCalories() {
+    public void testHamperGetCalories() {
 		Hamper testHamper = new Hamper();
 		testHamper.addFood(new FoodItem(10, 20, 30, 40, 100, "Apple", 1));
 		testHamper.addFood(new FoodItem(10, 20, 30, 40, 100, "Banana", 2));
