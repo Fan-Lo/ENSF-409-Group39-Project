@@ -27,7 +27,7 @@ public class Inventory {
         inventory = new ArrayList<>();
         database = new AccessDatabase("jdbc:mysql://localhost/food_inventory","student","ensf");
         database.initializeConnection();
-        populate();;
+        populate();
     }
     
     /** 

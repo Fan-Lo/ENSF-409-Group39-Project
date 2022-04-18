@@ -1,3 +1,11 @@
+/** 
+* FamilyTest.java
+* @author     Justin Kuhn
+* href= "mailto:justinkuhn@ucalgary.ca">justin.kuhn@ucalgary.ca</a>
+* @version 2.2
+* @since 1.0	
+**/  
+
 package edu.ucalgary.ensf409;
 
 import org.junit.Test;
@@ -11,166 +19,153 @@ public class FamilyTest {
 
     // Test the constructor for Family
     @Test
-    public void testPersonConstructor() {
-		Family testFamily = new Family();
+    public void testFamilyConstructor() {
+		int aMale = 1, aFemale = 1, childA8 = 1, childU8 = 1;
+		Family testFamily = new Family(aMale, aFemale, childA8, childU8);
 
 	    // Assert that Family constructor creates a valid Object
         assertNotNull("The Family object is null.", testFamily); 
     }
 	
-	// Test addFamilyMember()
+	// Test getWeeklyGrainNeeds()
     @Test
-    public void testAddFamilyMember() {
-		Nutrition nutrition = new Nutrition(10, 20, 30, 40, 2000);
-		int clientID = 1;
-        Person testPerson = new Person(nutrition, clientID);
-		Family testFamily = new Family();
-		testFamily.addFamilyMember(testPerson);
+    public void testGetWeeklyGrainNeeds() {
+		int aMale = 1, aFemale = 0, childA8 = 0, childU8 = 0;
+		Family testFamily = new Family(aMale, aFemale, childA8, childU8);
 		
-		int expectedSize = 1;
-		int actualSize = testFamily.getFamilyMembers().size();
+		int expectedGrainNeeds = 400 * 7;
+		int actualGrainNeeds = testFamily.getWeeklyGrainNeeds();
 		
-		assertEquals("addFamilyMember() did not work as intended.", actualSize, expectedSize);
+		// Assert that getWeeklyGrainNeeds() returns the grain needs of the family multiplied by 7
+		assertEquals("getWeeklyGrainNeeds() returned the incorrect value.", expectedGrainNeeds, actualGrainNeeds);
     }
 	
-	// Test removeFamilyMember()
+	// Test getWeeklyVeggieNeeds()
     @Test
-    public void testRemoveFamilyMember() {
-		Nutrition nutrition = new Nutrition(10, 20, 30, 40, 2000);
-		int clientID = 1;
-        Person testPerson = new Person(nutrition, clientID);
-		Family testFamily = new Family();
-		testFamily.addFamilyMember(testPerson);
-		testFamily.removeFamilyMember(testPerson);
+    public void testGetWeeklyVeggieNeeds() {
+		int aMale = 1, aFemale = 0, childA8 = 0, childU8 = 0;
+		Family testFamily = new Family(aMale, aFemale, childA8, childU8);
 		
-		int expectedSize = 0;
-		int actualSize = testFamily.getFamilyMembers().size();
+		int expectedVeggieNeeds = 701 * 7;
+		int actualVeggieNeeds = testFamily.getWeeklyVeggieNeeds();
 		
-		assertEquals("addFamilyMember() did not work as intended.", actualSize, expectedSize);
+		// Assert that getWeeklyVeggieNeeds() returns the veggie needs of the family multiplied by 7
+		assertEquals("getWeeklyVeggieNeeds() returned the incorrect value.", expectedVeggieNeeds, actualVeggieNeeds);
     }
 	
-	// Test weeklyFamilyNeeds()
+	// Test getWeeklyProteinNeeds()
     @Test
-    public void testWeeklyFamilyNeeds() {
-		Nutrition nutrition = new Nutrition(10, 20, 30, 40, 2000);
-		int clientID = 1;
-        Person testPerson = new Person(nutrition, clientID);
-		Family testFamily = new Family();
-		testFamily.addFamilyMember(testPerson);
+    public void testGetWeeklyProteinNeeds() {
+		int aMale = 1, aFemale = 0, childA8 = 0, childU8 = 0;
+		Family testFamily = new Family(aMale, aFemale, childA8, childU8);
 		
-		Nutrition weeklyNeeds = testFamily.weeklyFamilyNeeds();
-		int expectedCals = 2000 * 7;
-		int actualCals = weeklyNeeds.getCalories();
+		int expectedProteinNeeds = 650 * 7;
+		int actualProteinNeeds = testFamily.getWeeklyProteinNeeds();
 		
-		assertEquals("An incorrect calculation for weekly needs occured.", actualCals, expectedCals);
+		// Assert that getWeeklyProteinNeeds() returns the protein needs of the family multiplied by 7
+		assertEquals("getWeeklyProteinNeeds() returned the incorrect value.", expectedProteinNeeds, actualProteinNeeds);
     }
 	
-	// Test getGrainNeeds()
+	// Test getWeeklyOtherNeeds()
     @Test
-    public void testGetGrainNeeds() {
-		Nutrition nutrition = new Nutrition(10, 20, 30, 40, 2000);
-		int clientID = 1;
-        Person testPerson = new Person(nutrition, clientID);
-		Family testFamily = new Family();
-		testFamily.addFamilyMember(testPerson);
+    public void testGetWeeklyOtherNeeds() {
+		int aMale = 1, aFemale = 0, childA8 = 0, childU8 = 0;
+		Family testFamily = new Family(aMale, aFemale, childA8, childU8);
 		
-		int expectedGrain = (int)((10/(double)100) * 2000);
-		int actualGrain = testFamily.getGrainNeeds();
+		int expectedOtherNeeds = 750 * 7;
+		int actualOtherNeeds = testFamily.getWeeklyOtherNeeds();
 		
-		assertEquals("getGrainNeeds() returned the incorrect amount.", actualGrain, expectedGrain);
+		// Assert that getWeeklyOtherNeeds() returns the other needs of the family multiplied by 7
+		assertEquals("getWeeklyOtherNeeds() returned the incorrect value.", expectedOtherNeeds, actualOtherNeeds);
     }
 	
-	// Test getVeggieNeeds()
+	// Test getWeeklyCalorieNeeds()
     @Test
-    public void testGetVeggieNeeds() {
-		Nutrition nutrition = new Nutrition(10, 20, 30, 40, 2000);
-		int clientID = 1;
-        Person testPerson = new Person(nutrition, clientID);
-		Family testFamily = new Family();
-		testFamily.addFamilyMember(testPerson);
+    public void testGetWeeklyCalorieNeeds() {
+		int aMale = 1, aFemale = 0, childA8 = 0, childU8 = 0;
+		Family testFamily = new Family(aMale, aFemale, childA8, childU8);
 		
-		int expectedVeggie = (int)((20/(double)100) * 2000);
-		int actualVeggie = testFamily.getVeggieNeeds();
+		int expectedCalorieNeeds = 2500 * 7;
+		int actualCalorieNeeds = testFamily.getWeeklyCalorieNeeds();
 		
-		assertEquals("getVeggieNeeds() returned the incorrect amount.", actualVeggie, expectedVeggie);
-    }
-	
-	// Test getProteinNeeds()
-    @Test
-    public void testGetProteinNeeds() {
-		Nutrition nutrition = new Nutrition(10, 20, 30, 40, 2000);
-		int clientID = 1;
-        Person testPerson = new Person(nutrition, clientID);
-		Family testFamily = new Family();
-		testFamily.addFamilyMember(testPerson);
-		
-		int expectedProtein = (int)((30/(double)100) * 2000);
-		int actualProtein = testFamily.getProteinNeeds();
-		
-		assertEquals("getProteinNeeds() returned the incorrect amount.", actualProtein, expectedProtein);
-    }
-	
-	// Test getOtherNeeds()
-    @Test
-    public void testGetOtherNeeds() {
-		Nutrition nutrition = new Nutrition(10, 20, 30, 40, 2000);
-		int clientID = 1;
-        Person testPerson = new Person(nutrition, clientID);
-		Family testFamily = new Family();
-		testFamily.addFamilyMember(testPerson);
-		
-		int expectedOther = (int)((40/(double)100) * 2000);
-		int actualOther = testFamily.getGrainNeeds();
-		
-		assertEquals("getOtherNeeds() returned the incorrect amount.", actualOther, expectedOther);
-    }
-	
-	// Test getCalorieNeeds()
-    @Test
-    public void testGetCalorieNeeds() {
-		Nutrition nutrition = new Nutrition(10, 20, 30, 40, 2000);
-		int clientID = 1;
-        Person testPerson = new Person(nutrition, clientID);
-		Family testFamily = new Family();
-		testFamily.addFamilyMember(testPerson);
-		
-		int expectedCalories = 2000;
-		int actualCalories = testFamily.getCalorieNeeds();
-		
-		assertEquals("getCalorieNeeds() returned the incorrect amount.", actualCalories, expectedCalories);
-    }
-	
-	// Test getFamilyMembers
-    @Test
-    public void testGetFamilyMembers() {
-		Nutrition nutrition = new Nutrition(10, 20, 30, 40, 2000);
-		int clientID = 1;
-        Person testPerson = new Person(nutrition, clientID);
-		Family testFamily = new Family();
-		testFamily.addFamilyMember(testPerson);
-		
-		ArrayList<Person> members = testFamily.getFamilyMembers();
-		Person expectedPerson = testPerson;
-		int actualPerson = members.get(0);
-		
-		assertEquals("getFamilyMembers() did not work as expected.", actualPerson, expectedPerson);
+		// Assert that getWeeklyCalorieNeeds() returns the calorie needs of the family multiplied by 7
+		assertEquals("getWeeklyCalorieNeeds() returned the incorrect value.", expectedCalorieNeeds, actualCalorieNeeds);
     }
 	
 	// Test createHamper()
     @Test
-    public void testCreateHamper() {
-		Nutrition nutrition = new Nutrition(10, 20, 30, 40, 2000);
-		int clientID = 1;
-        Person testPerson = new Person(nutrition, clientID);
-		Family testFamily = new Family();
-		testFamily.addFamilyMember(testPerson);
-		Nutrition weeklyNeeds = testFamily.weeklyFamilyNeeds();
+    public void testCreateHamper() throws ItemNotFoundException{
+		int aMale = 1, aFemale = 0, childA8 = 0, childU8 = 0;
+		Family testFamily = new Family(aMale, aFemale, childA8, childU8);
+		Inventory inventory = new Inventory();
 		
-		testFamily.createHamper(weeklyNeeds);
+		testFamily.createHamper(inventory);
 		Hamper theHamper = testFamily.getHamper();
 		
+		// Assert that createHamper() created a hamper properly
 		assertNotNull("createHamper() did not create a hamper properly.", theHamper);
     }
 	
+	// Test getHamper()
+    @Test
+    public void testGetHamper() throws ItemNotFoundException{
+		int aMale = 1, aFemale = 0, childA8 = 0, childU8 = 0;
+		Family testFamily = new Family(aMale, aFemale, childA8, childU8);
+		Inventory inventory = new Inventory();
+		
+		testFamily.createHamper(inventory);
+		Hamper theHamper = testFamily.getHamper();
+		
+		// Assert that getHamper() returns the correct hamper
+		assertNotNull("getHamper() did not return the correct hamper.", theHamper);
+    }
+	
+	// Test getNumAMale()
+    @Test
+    public void testGetNumAMale() {
+		int expectedNumAMale = 1, aFemale = 1, childA8 = 2, childU8 = 3;
+		Family testFamily = new Family(expectedNumAMale, aFemale, childA8, childU8);
+		
+		int actualNumAMale = testFamily.getNumAMale();
+		
+		// Assert that getNumAMale() returns the number of adult males in the family
+		assertEquals("getNumAMale() returned the incorrect value.", expectedNumAMale, actualNumAMale);
+    }
+	
+	// Test getNumAFemale()
+    @Test
+    public void testGetNumAFemale() {
+		int aMale = 1, expectedNumAFemale = 1, childA8 = 2, childU8 = 3;
+		Family testFamily = new Family(aMale, expectedNumAFemale, childA8, childU8);
+		
+		int actualNumAFemale = testFamily.getNumAFemale();
+		
+		// Assert that getNumAFemale() returns the number of adult females in the family
+		assertEquals("getNumAFemale() returned the incorrect value.", expectedNumAFemale, actualNumAFemale);
+    }
+	
+	// Test getNumChildA8()
+    @Test
+    public void testGetNumChildA8() {
+		int aMale = 1, aFemale = 1, expectedNumChildA8 = 2, childU8 = 3;
+		Family testFamily = new Family(aMale, aFemale, expectedNumChildA8, childU8);
+		
+		int actualNumChildA8 = testFamily.getNumChildA8();
+		
+		// Assert that getNumChildA8() returns the number of children over 8 in the family
+		assertEquals("getNumChildA8() returned the incorrect value.", expectedNumChildA8, actualNumChildA8);
+    }
+	
+	// Test getNumChildU8()
+    @Test
+    public void testGetNumChildU8() {
+		int aMale = 1, aFemale = 1, childA8 = 2, expectedNumChildU8 = 3;
+		Family testFamily = new Family(aMale, aFemale, childA8, expectedNumChildU8);
+		
+		int actualNumChildU8 = testFamily.getNumChildU8();
+		
+		// Assert that getNumChildU8() returns the number of children under 8 in the family
+		assertEquals("getNumChildU8() returned the incorrect value.", expectedNumChildU8, actualNumChildU8);
+    }
     
 }

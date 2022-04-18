@@ -1,6 +1,7 @@
 /** 
 * Nutrition.java
-* 
+* @author     Justin Kuhn
+* href= "mailto:justinkuhn@ucalgary.ca">justin.kuhn@ucalgary.ca</a>
 * @version 2.6
 * @since 1.5
 * Now a superclass to FoodItem
