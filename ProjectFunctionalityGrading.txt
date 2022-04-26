@@ -1,0 +1,35 @@
+The code implementation category included functionality testing to see if the program performance met the given requirements.
+
+ 
+
+All projects were run against the same grading database. This database contained less than 20 items where there was only one possible optimal combination for certain hamper configurations.
+
+ 
+
+For each GUI, the TAs tested the following scenarios:
+
+ 
+
+1. Could an order be created that contains more than one hamper? Were the correct item configurations retrieved and then updated in the database? Was the order form printed?
+
+2. Could a second order be placed without restarting the program? If this order was an unsuccessful configuration, was a message displayed identifying the gaps in the inventory?
+
+3. Could a single hamper be placed as an order and retrieve accurate results?
+
+4. If only some of the hampers within an order could be fulfilled, was an unsuccessful message displayed and the database NOT updated?
+
+5. Could a consecutive successful order be placed after an unsuccessful order?
+
+6. Did the GUI handle invalid inputs such as negative numbers or words?
+
+ 
+
+If your project could not run against grading database, we also tried to view the functionality using the given database (this likely meant there was some hardcoding or assumptions in your code).
+
+ 
+
+All provided unit tests were run and examined. It was fine if your unit tests expected to be run against the original database.
+
+ 
+
+Unfortunately due to deferred term work policies, we cannot release the exact grading database. However, you are welcome to contact your grading TA/instructors for more details on specific performance cases.
